@@ -1,5 +1,6 @@
 <script>
 	import { lang } from '$lib/store/lang';
+	import Insert from './insert.svelte';
 	import Sidbar from './sidbar.svelte';
 
 	$: blur = '';
@@ -33,6 +34,9 @@
 		<a href="/pages/reports" title={$lang.footer[1]}>Reports</a>
 		<a href="/pages/groups" title={$lang.footer[0]}>Groups</a>
 	</footer>
+	<div class="fixed bg-black">
+		<Insert />
+	</div>
 </main>
 
 <style>
