@@ -17,13 +17,13 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <main class=" h-screen flex flex-col justify-between items-center ">
-	<header class="{blur} md:!hidden self-start p-4  ">
+	<header class="{blur} md:!hidden bg-[cadetblue] w-full self-start p-4  ">
 		<button on:click={handlMenu} class="menuBtn">|||</button>
 	</header>
 	<div class="{sidbar} md:!flex md:w-full ">
 		<Sidbar {closeMenu} {bluring} />
 	</div>
-	<div class="relative {blur} ">
+	<div class="relative {blur} h-full w-full overflow-y-auto ">
 		<slot />
 	</div>
 	<footer

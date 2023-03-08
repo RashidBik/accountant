@@ -9,6 +9,9 @@
 	 * @type {any}
 	 */
 	export let closeMenu;
+	/**
+	 * @type {() => void}
+	 */
 	export let bluring;
 	/**
 	 * @type {typeof Lang | null}
@@ -21,7 +24,7 @@
 </script>
 
 <div class="w-[40%] md:w-full flex md:flex-col  ">
-	<div class="border-r md:border-b px-4 md:py-4">
+	<div class="border-r md:border-b px-4 md:py-4 bg-[cadetblue]">
 		<header class="md:!hidden flex justify-between pt-[20px]">
 			<span class="w-[20px] h-[20px]	p-[5px] bg-[forestgreen] rounded-full" />
 			<button on:click={closeMenu}>&LeftArrow;</button>
@@ -43,7 +46,7 @@
 			<div class="md:hidden" on:click={() => (active = null)}>Quit</div>
 		</div>
 	</div>
-	<div class=" md:flex md:justify-center md:p-2 ">
+	<div class=" md:flex md:justify-center md:p-2 bg-[cadetblue] ">
 		<svelte:component this={active} />
 	</div>
 </div>

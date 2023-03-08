@@ -1,7 +1,18 @@
 <script>
+	let auth = false;
 </script>
 
-<div class="container">Home</div>
+<div class=" w-full h-full overflow-y-auto bg-lime-600">
+	{#if auth}
+		<p>Chart</p>
+	{:else}
+		<p>
+			Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores earum pariatur modi quaerat
+			voluptate, possimus placeat! Soluta perferendis quis temporibus eligendi libero sapiente totam
+			consequuntur, nam odit magnam velit ducimus.
+		</p>
+	{/if}
+</div>
 
 <style>
 </style>
