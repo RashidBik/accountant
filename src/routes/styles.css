@@ -39,4 +39,10 @@
 	body {
 		@apply h-screen bg-[#eee] box-border;
 	}
+	.dark {
+		@apply bg-slate-800 text-yellow-200;
+	}
+	.light {
+		@apply bg-slate-100 text-black;
+	}
 }

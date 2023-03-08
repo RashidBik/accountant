@@ -1,5 +1,7 @@
 <script>
+	import { lang } from '$lib/store/lang';
 	import Sidbar from './sidbar.svelte';
+
 	$: blur = '';
 	$: sidbar = 'hidden';
 	const handlMenu = () => {
@@ -10,30 +12,32 @@
 		sidbar = 'hidden';
 		blur = '';
 	};
+	const bluring = () => (blur = 'blur');
 </script>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <main class=" h-screen flex flex-col justify-between items-center ">
 	<header class="{blur} md:!hidden self-start p-4  ">
 		<button on:click={handlMenu} class="menuBtn">|||</button>
 	</header>
 	<div class="{sidbar} md:!flex md:w-full ">
-		<Sidbar {closeMenu} />
+		<Sidbar {closeMenu} {bluring} />
 	</div>
-	<div class="relative {blur}  ">
+	<div class="relative {blur} ">
 		<slot />
 	</div>
 	<footer
-		class=" w-full flex justify-evenly pt-6 max-w-screen-md bg-cyan-700 h-24 {blur} md:filter-none"
+		class=" w-full flex justify-evenly bg-[cadetblue] pt-6 max-w-screen-md h-24 {blur} md:filter-none"
 	>
-		<a href="/pages/home">Home</a>
-		<a href="/pages/reports">Reports</a>
-		<a href="/pages/groups">Groups</a>
+		<a href="/pages/home" title={$lang.footer[2]}>Home</a>
+		<a href="/pages/reports" title={$lang.footer[1]}>Reports</a>
+		<a href="/pages/groups" title={$lang.footer[0]}>Groups</a>
 	</footer>
 </main>
 
 <style>
 	.blur {
-		filter: blur(2px);
+		filter: blur(10px);
 	}
 	.hidden {
 		display: none;
@@ -49,8 +53,7 @@
 	.primary-sidbar {
 		position: fixed;
 		display: flex;
-		background-color: cadetblue;
-		width: 40vw;
+		width: 100vw;
 		top: 0%;
 		left: 0;
 		padding: 8px;
