@@ -1,9 +1,22 @@
 <script>
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
+
+	const data = {
+		id: 1,
+		group: 'A',
+		amount: 2000,
+		type: 'income',
+		date: '2023-11-11',
+		deal: 'cash',
+		report:
+			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe dolore reprehenderit dolorum distinctio voluptate autem, porro quod, fuga expedita praesentium adipisci quaerat quam sapiente dolores id odit. Ducimus, blanditiis sed.'
+	};
 	$: visible = false;
 	$: toggleOpt = false;
 </script>
 
-<div class="flex flex-col p-3 h-[100vh] md:w-full">
+<div class="flex flex-col p-3 h-full  justify-center items-center">
 	<form class="flex flex-col rounded-xl ">
 		<div class="text-center ">Insert Your Data</div>
 		<div class="">
@@ -123,8 +136,15 @@
 				</div>
 			</div>
 		</div>
-		<div class="py-8 px-12">
-			<div class="hover:border bg-green-700 border-gray-100  text-center  font-bold rounded-xl">
+		<div class="py-8 flex w-full justify-around">
+			<div
+				class=" w-20  hover:border bg-gray-300 border-gray-100  text-center  font-bold rounded-xl"
+			>
+				<button on:click={() => goto(`/pages/group`)}>back</button>
+			</div>
+			<div
+				class=" w-20  hover:border bg-green-700 border-gray-100  text-center  font-bold rounded-xl"
+			>
 				<input type="submit" value="Save" />
 			</div>
 		</div>

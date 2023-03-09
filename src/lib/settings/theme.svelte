@@ -12,6 +12,10 @@
 </script>
 
 <div class="">
+	<p class="md:hidden text-[8px] py-2">
+		<b>Great?</b>
+		Portect your eyes from bad lights. it's good to use dark mode during the night
+	</p>
 	<label class="switch">
 		<input type="checkbox" checked={dark} />
 		<!-- svelte-ignore a11y-click-events-have-key-events -->

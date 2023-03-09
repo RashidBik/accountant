@@ -1,10 +1,21 @@
+<script>
+	import { goto } from '$app/navigation';
+
+	/**
+	 * @type {any}
+	 */
+	export let handleInsert;
+	let auth = false;
+</script>
+
 <div>
-	<span>
-		<a href="/insertData">
-			<span
-				class="fixed bottom-20 right-9 z-10 h-12 w-12 rounded-full bg-inherit flex justify-center items-center text-3xl border border-gray-400"
-				>+</span
-			>
-		</a>
-	</span>
+	<div
+		class="fixed bottom-20 right-9 z-10 h-12 w-12 rounded-full bg-inherit flex justify-center items-center  border border-gray-400"
+	>
+		{#if auth}
+			<button class="text-3xl" on:click={handleInsert}>+</button>
+		{:else}
+			<button on:click={() => goto('/login')}>login</button>
+		{/if}
+	</div>
 </div>

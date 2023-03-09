@@ -72,7 +72,7 @@
 					<div class="">
 						<!-- svelte-ignore a11y-click-events-have-key-events -->
 						<div
-							on:click={() => goto('/card', { state: item.id })}
+							on:click={() => goto(`/pages/${item.id}`)}
 							class="grid grid-cols-4 justify-around items-stretch "
 							style="color: {item.type === 'income' ? 'green' : 'red'}"
 						>

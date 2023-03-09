@@ -1,10 +1,15 @@
 <script>
 	import { lang } from '$lib/store/lang';
+	import { setContext } from 'svelte';
 	import Insert from './insert.svelte';
+	import NewInser from './reports/newInser.svelte';
 	import Sidbar from './sidbar.svelte';
+	// import DiAngularSimple from 'svelte-icons/di/DiAngularSimple.svelte'/
 
+	let insert = false;
 	$: blur = '';
 	$: sidbar = 'hidden';
+
 	const handlMenu = () => {
 		sidbar = 'primary-sidbar';
 		blur = 'blur';
@@ -14,30 +19,37 @@
 		blur = '';
 	};
 	const bluring = () => (blur = 'blur');
+	const handleInsert = () => (insert = true);
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<main class=" h-screen flex flex-col justify-between items-center ">
-	<header class="{blur} md:!hidden bg-[cadetblue] w-full self-start p-4  ">
-		<button on:click={handlMenu} class="menuBtn">|||</button>
-	</header>
-	<div class="{sidbar} md:!flex md:w-full ">
-		<Sidbar {closeMenu} {bluring} />
-	</div>
-	<div class="relative {blur} h-full w-full overflow-y-auto ">
-		<slot />
-	</div>
-	<footer
-		class=" w-full flex justify-evenly bg-[cadetblue] pt-6 max-w-screen-md h-24 {blur} md:filter-none"
-	>
-		<a href="/pages/home" title={$lang.footer[2]}>Home</a>
-		<a href="/pages/reports" title={$lang.footer[1]}>Reports</a>
-		<a href="/pages/groups" title={$lang.footer[0]}>Groups</a>
-	</footer>
-	<div class="fixed bg-black">
-		<Insert />
-	</div>
-</main>
+<div class={insert ? 'flex' : ''}>
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
+	<main class=" h-screen flex flex-col justify-between items-center {insert ? 'md:w-[70%]' : ''} ">
+		<header class="{blur} md:!hidden bg-[cadetblue] w-full self-start p-4  ">
+			<button on:click={handlMenu} class="menuBtn">|||</button>
+		</header>
+		<div class="{sidbar} md:!flex md:w-full ">
+			<Sidbar {closeMenu} {bluring} {handleInsert} {insert} />
+		</div>
+		<div class="relative {blur} h-full w-full overflow-y-auto ">
+			<slot />
+		</div>
+		<footer
+			class=" md:hidden w-full flex justify-evenly bg-[cadetblue] pt-2 max-w-screen-md h-12 {blur} md:filter-none"
+		>
+			<a href="/pages/home" title={$lang.footer[2]}>Home</a>
+			<a href="/pages/reports" title={$lang.footer[1]}>Reports</a>
+			<a href="/pages/groups" title={$lang.footer[0]}>Groups</a>
+			<div class="md:flex hidden">insert</div>
+		</footer>
+	</main>
+	{#if insert}
+		<div class="fixed w-full md:relative md:w-[30%] bg-[cadetblue]">
+			<Insert />
+		</div>
+	{/if}
+</div>
+<div class="fixed md:hidden {blur === 'blur' && 'hidden'} "><NewInser {handleInsert} /></div>
 
 <style>
 	.blur {
@@ -60,7 +72,6 @@
 		width: 100vw;
 		top: 0%;
 		left: 0;
-		padding: 8px;
 		height: 100%;
 		z-index: 1;
 	}

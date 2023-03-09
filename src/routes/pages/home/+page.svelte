@@ -2,7 +2,7 @@
 	let auth = false;
 </script>
 
-<div class=" w-full h-full overflow-y-auto bg-lime-600">
+<div class=" w-full h-full overflow-y-auto ">
 	{#if auth}
 		<p>Chart</p>
 	{:else}
