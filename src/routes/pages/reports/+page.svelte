@@ -3,36 +3,8 @@
 	import { lang } from '$lib/store/lang';
 
 	export let data;
-	const { contents } = data;
-	// const content = [
-	// 	{
-	// 		id: 1,
-	// 		type: 'expens',
-	// 		amount: 20033,
-	// 		deal: 'cash',
-	// 		group: 'food',
-	// 		date: '2023-12-4'
-	// 	},
-	// 	{
-	// 		id: 2,
-	// 		type: 'income',
-	// 		amount: 204,
-	// 		deal: 'cash',
-	// 		group: 'utility and some foodllllllll',
-	// 		date: '2023-12-4'
-	// 	},
-	// 	{
-	// 		id: 3,
-	// 		type: 'income',
-	// 		amount: 20444,
-	// 		deal: 'cash',
-	// 		group: 'utilit',
-	// 		date: '2023-12-4'
-	// 	}
-	// ];
-	let datas = { income: 200000, expens: 2909 };
-
-	// const data = { income: 3333, expens: 23422 };
+	const { result } = data;
+	const { contents, income, expens } = result;
 
 	// const sortDate = (choosedDate) => {
 	// 	const selectedData = content.filter((item) => {
@@ -40,7 +12,6 @@
 	// 	});
 	// };
 	let auth = true;
-	console.log(contents);
 </script>
 
 <div class=" flex flex-col items-center w-full h-full overflow-y-auto ">
@@ -51,15 +22,15 @@
 				<nav class="flex justify-evenly font-bold min-w-min lg:min-w-[10em]">
 					<div class="text-green-800">
 						<p>{$lang.reports.calc[0]}</p>
-						<p>{datas && datas.income}</p>
+						<p>{income && income}</p>
 					</div>
 					<div class="text-red-800">
 						<p>{$lang.reports.calc[1]}</p>
-						<p>{datas && datas.expens}</p>
+						<p>{expens && expens}</p>
 					</div>
 					<div class="text-blue-800">
 						<p>{$lang.reports.calc[2]}</p>
-						<p>{datas && datas.income - datas.expens}</p>
+						<p>{income - expens}</p>
 					</div>
 				</nav>
 			</div>
