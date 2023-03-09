@@ -69,7 +69,7 @@
 			<button class="md:hidden" on:click={() => (active = null)}>Logout</button>
 		</div>
 	</div>
-	<div class=" md:flex md:justify-center p-4 w-full md:p-2 ">
+	<div class=" md:flex md:justify-center  w-full md:p-2 ">
 		<svelte:component this={active} />
 	</div>
 </div>

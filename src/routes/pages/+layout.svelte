@@ -31,7 +31,7 @@
 		<div class="{sidbar} md:!flex md:w-full ">
 			<Sidbar {closeMenu} {bluring} {handleInsert} {insert} />
 		</div>
-		<div class="relative {blur} h-full w-full overflow-y-auto ">
+		<div class="relative {blur} h-full w-full md:px-40 overflow-y-auto ">
 			<slot />
 		</div>
 		<footer
