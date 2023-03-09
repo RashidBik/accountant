@@ -1,6 +1,7 @@
 <script>
 	// @ts-nocheck
 
+	import { goto } from '$app/navigation';
 	import Lang from '$lib/settings/lang.svelte';
 	import Profile from '$lib/settings/profile.svelte';
 	import Theme from '$lib/settings/theme.svelte';
@@ -24,12 +25,16 @@
 	/**
 	 * @type {any}
 	 */
-
+	let auth = false;
 	export let insert;
 	let active = null;
 	function handleAccount() {
-		active = Profile;
-		bluring();
+		if (auth) {
+			goto('/profile');
+		} else {
+			active = Profile;
+			bluring();
+		}
 	}
 	function handlBack() {
 		active = null;
