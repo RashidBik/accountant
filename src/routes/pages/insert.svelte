@@ -3,6 +3,9 @@
 	$: toggleOpt = false;
 </script>
 
+<button on:click={() => history.go(-1)} class="text-xl md:hidden fixed top-8 left-8 text-white">
+	&leftarrow;
+</button>
 <div class="flex flex-col p-3 h-[100vh] md:w-full">
 	<form class="flex flex-col rounded-xl ">
 		<div class="text-center ">Insert Your Data</div>

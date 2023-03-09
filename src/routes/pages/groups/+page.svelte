@@ -1,6 +1,7 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { lang } from '$lib/store/lang';
+	import SearchBar from '../searchBar.svelte';
 
 	const group = [
 		{ group: 'food' },
@@ -16,6 +17,7 @@
 	let auth = false;
 </script>
 
+<SearchBar />
 <div class=" w-full h-full overflow-y-auto">
 	{#if auth}
 		<div class="flex flex-col justify-center items-center w-full ">

@@ -14,6 +14,9 @@
 	};
 </script>
 
+<button on:click={() => history.go(-1)} class="text-xl fixed md:hidden top-3 right-8 text-white">
+	&leftarrow;
+</button>
 <div>
 	<div class="flex flex-col justify-center md:px-12">
 		<div class="text-center font-bold p-2 text-lg">{data && data.date}</div>

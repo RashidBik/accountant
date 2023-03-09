@@ -7,6 +7,9 @@
 	];
 </script>
 
+<button on:click={() => history.go(-1)} class="text-xl fixed md:hidden top-8 left-8 text-white">
+	&leftarrow;
+</button>
 <div class="w-full h-full  flex flex-col items-center">
 	<header class="border border-t-0 w-[50%] text-center">{$page.params.group}</header>
 	<!-- svelte-ignore a11y-click-events-have-key-events -->

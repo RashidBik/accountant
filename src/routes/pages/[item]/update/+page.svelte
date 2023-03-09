@@ -16,6 +16,9 @@
 	$: toggleOpt = false;
 </script>
 
+<button on:click={() => history.go(-1)} class="text-xl fixed md:hidden top-3 right-8 text-white">
+	&leftarrow;
+</button>
 <div class="flex flex-col p-3 h-full  justify-center items-center">
 	<form class="flex flex-col rounded-xl ">
 		<div class="text-center ">Insert Your Data</div>
@@ -137,11 +140,6 @@
 			</div>
 		</div>
 		<div class="py-8 flex w-full justify-around">
-			<div
-				class=" w-20  hover:border bg-gray-300 border-gray-100  text-center  font-bold rounded-xl"
-			>
-				<button on:click={() => goto(`/pages/group`)}>back</button>
-			</div>
 			<div
 				class=" w-20  hover:border bg-green-700 border-gray-100  text-center  font-bold rounded-xl"
 			>

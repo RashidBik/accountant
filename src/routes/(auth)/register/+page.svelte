@@ -3,9 +3,10 @@
 </script>
 
 <div class="h-[99vh] flex justify-center items-center text-gray-900 px-3">
-	<!-- <header style={color.C1} class='flex justify-end p-4'> 
-        <Back />
-      </header> -->
+	<button on:click={() => history.go(-1)} class="text-xl fixed top-8 left-8 text-white">
+		&leftarrow;
+	</button>
+
 	<form class=" bg-inherit border p-2 rounded-xl  text-sm">
 		<div class="text-blue-400">
 			{$lang.register[0]}

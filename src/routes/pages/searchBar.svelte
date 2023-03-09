@@ -21,10 +21,12 @@
 	 */
 </script>
 
-<div>
+<div class="fixed top-4 flex right-10">
 	<input
-		class=" bg-inherit outline-none border-b "
-		type="text"
-		on:change={(word) => searchData(word)}
+		class=" bg-inherit outline-none underline focus:bg-[#00000036] w-40 px-1 "
+		type="search"
+		name="search"
+		id="search"
 	/>
+	<label class="px-2" for="search">Search</label>
 </div>
