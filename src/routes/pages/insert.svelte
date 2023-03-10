@@ -1,11 +1,18 @@
 <script>
+	import { fetched } from '$lib/store/data';
+
 	$: visible = false;
 	$: toggleOpt = false;
+
+	const handlClick = () => {
+		toggleOpt = !toggleOpt;
+	};
+
+	const handlNewGroup = () => {
+		visible = !visible;
+	};
 </script>
 
-<button on:click={() => history.go(-1)} class="text-xl md:hidden fixed top-8 left-8 text-white">
-	&leftarrow;
-</button>
 <div class="flex flex-col p-3 h-[100vh] md:w-full">
 	<form class="flex flex-col rounded-xl ">
 		<div class="text-center ">Insert Your Data</div>
@@ -50,41 +57,39 @@
 			</div>
 			<div class="px-12 py-4">
 				<div class="flex flex-col border border-gray-100 rounded-xl space-y-12">
-					<div class="flex select-none justify-between rounded-xl p-2 px-4  bg-inherit ">
-						<p />
-					</div>
-					<div
-						class=" absolute grid-cols-3 p-2 px-4 z-10 rounded-xl bg-[#222]"
-						style="display: {toggleOpt ? 'grid' : 'none'};"
+					<button
+						class="flex select-none justify-between rounded-xl p-2 px-4  bg-inherit "
+						on:click={() => (toggleOpt = !toggleOpt)}
 					>
-						<div class="m-1 w-16 h-8 text-center border border-gray-400 rounded-lg ">food</div>
-						<div class="m-1 w-16 h-8 text-center border border-gray-400 rounded-lg ">shirt</div>
-						<div class="m-1 w-16 h-8 text-center border border-gray-400 rounded-lg ">salary</div>
-						<div class="m-1 w-16 h-8 text-center border border-gray-400 rounded-lg ">home</div>
+						<p>_ _</p>
+						{toggleOpt ? '-' : '+'}
+					</button>
+
+					<div
+						class=" absolute flex-wrap p-2 max-w-[160px] z-10 rounded-xl bg-[#222]"
+						style="display: {toggleOpt ? 'flex' : 'none'}"
+					>
+						<div style="display: {!visible ? 'none' : 'flex'}" class=" flex-1 ">
+							<input
+								class=" text-[11px] border-b border-[#ffffff30] mb-2 outline-none bg-inherit text-white "
+								type="text"
+								placeholder="new group"
+							/>
+						</div>
+
+						{#each $fetched as content}
+							<button
+								class="m-1 w-16 h-8 text-center border border-gray-400 rounded-lg "
+								on:click={handlClick}
+							>
+								{content}
+							</button>
+						{/each}
+
 						<div class="m-1 w-16 h-8 text-center ">
-							<span style="display: {visible ? 'none' : 'flex'}">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke-width="1.5"
-									stroke="currentColor"
-									class="w-6 h-6"
-								>
-									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
-									/>
-								</svg>
-							</span>
-							<div style="display: {!visible ? 'none' : 'flex'}" class=" bg-inherit">
-								<input
-									class=" absolute w-32 px-2 h-8 bg-none outline-none text-gray-900 "
-									type="text"
-									placeholder="new group"
-								/>
-							</div>
+							<button on:click={handlNewGroup} style=" display: {visible ? 'none' : 'flex'}"
+								>+</button
+							>
 						</div>
 					</div>
 				</div>

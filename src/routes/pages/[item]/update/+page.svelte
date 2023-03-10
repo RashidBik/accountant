@@ -1,9 +1,11 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
+	import { fetched } from '$lib/store/data';
 
 	export let data;
 	let { group, item } = data;
+	fetched.set(group);
 
 	$: visible = false;
 	$: toggleOpt = false;
@@ -19,11 +21,11 @@
 <button on:click={() => history.go(-1)} class="text-xl fixed md:hidden top-3 right-8 text-white">
 	&leftarrow;
 </button>
-<div class="flex flex-col p-3 h-full  justify-center items-center">
+<div class="flex flex-col pt-32 p-3 h-full  justify-center items-center">
 	<form class="flex flex-col rounded-xl ">
 		<div class="text-center ">Update Your Data</div>
 		<div class="">
-			<div class="px-12 py-2  ">
+			<div class=" py-2  ">
 				<div class=" flex flex-col justify-evenly items-center rounded-xl   ">
 					<label class="p-2 " for="amount">
 						<svg
@@ -66,19 +68,28 @@
 					value="expens"
 				/>
 			</div>
-			<div class="px-12 py-4">
+			<div class="px-12 py-4 ">
 				<div class="flex flex-col border border-gray-100 rounded-xl space-y-12">
 					<button
 						class="flex select-none justify-between rounded-xl p-2 px-4  bg-inherit "
-						on:click={(e) => (toggleOpt = true)}
+						on:click={() => (toggleOpt = !toggleOpt)}
 					>
 						<p>{item.group}</p>
 						{toggleOpt ? '-' : '+'}
 					</button>
+
 					<div
-						class=" absolute grid-cols-3 p-2 px-4 z-10 rounded-xl bg-[#222]"
-						style="display: {toggleOpt ? 'grid' : 'none'}"
+						class=" absolute flex-wrap p-2 max-w-[160px] z-10 rounded-xl bg-[#222]"
+						style="display: {toggleOpt ? 'flex' : 'none'}"
 					>
+						<div style="display: {!visible ? 'none' : 'flex'}" class=" flex-1 ">
+							<input
+								class=" text-[11px] border-b border-[#ffffff30] mb-2 outline-none bg-inherit text-white "
+								type="text"
+								placeholder="new group"
+							/>
+						</div>
+
 						{#each group as content}
 							<button
 								class="m-1 w-16 h-8 text-center border border-gray-400 rounded-lg "
@@ -92,13 +103,6 @@
 							<button on:click={handlNewGroup} style=" display: {visible ? 'none' : 'flex'}"
 								>+</button
 							>
-							<div style="display: {!visible ? 'none' : 'flex'}" class=" bg-yellow-300 h-2 w-2 ">
-								<input
-									class=" absolute w-12 px-2 h-8  outline-none text-gray-900 "
-									type="text"
-									placeholder="new group"
-								/>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -106,21 +110,22 @@
 			<div class=" flex justify-center  p-2">
 				<p class="px-4 font-bold">Credit</p>
 				<label class="switch">
-					<input type="checkbox" />
+					<input type="checkbox" checked={item.deal == 'credit' ? false : true} />
 					<span class="slider round" />
 				</label>
 				<p class="px-4 font-bold">Cash</p>
 			</div>
-			<div class="px-12 flex justify-center ">
+			<div class="px-6 h-auto flex justify-center ">
 				<textarea
-					class=" rounded-xl p-2 w-full bg-inherit border border-gray-100"
+					class=" h-32 p-2 w-full bg-inherit border border-[#ffffff40]"
 					placeholder="Insert your report here"
 					name="report"
+					value={item.report}
 				/>
 			</div>
 			<div class="p-2  flex justify-center">
 				<div class="flex relative rounded-lg">
-					<input class="w-40  p-1 rounded-lg bg-inherit" type="date" />
+					<input class="w-40  p-1 rounded-lg bg-inherit" type="date" value={item.date} />
 					<span class=" absolute right-2">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
