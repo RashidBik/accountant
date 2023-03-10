@@ -2,19 +2,18 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 
-	const groups = [
-		{ id: 1, group: 'A', amount: 2000, type: 'income', date: '2023-11-11', deal: 'cash' }
-	];
+	export let data;
+	const { items } = data;
 </script>
 
 <button on:click={() => history.go(-1)} class="text-xl fixed md:hidden top-3 right-8 text-white">
 	&leftarrow;
 </button>
 <div class="w-full h-full  flex flex-col items-center">
-	<header class="border border-t-0 w-[50%] text-center">{$page.params.group}</header>
+	<header class="border border-t-0 w-[50%] text-center">{items[0].group}</header>
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<div class="w-full md:max-w-md">
-		{#each groups as item}
+		{#each items as item}
 			<div
 				on:click={() => goto(`/pages/${item.id}`)}
 				class="flex justify-evenly border cursor-pointer m-1"

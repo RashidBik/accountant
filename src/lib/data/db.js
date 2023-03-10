@@ -12,7 +12,8 @@ export const data = [
 				type: 'income',
 				deal: 'cash',
 				group: 'food',
-				date: '2023-11-11'
+				date: '2023-11-11',
+				report: 'theis kdfja ofadkl lpejf jpdjfas fkf asdfpaj kvksafja fasfksayivn ojda'
 			},
 			{
 				id: 2,
@@ -20,7 +21,8 @@ export const data = [
 				type: 'income',
 				deal: 'cash',
 				group: 'food',
-				date: '2023-11-11'
+				date: '2023-11-11',
+				report: 'theis kdfja ofadkl lpejf jpdjfas fkf asdfpaj kvksafja fasfksayivn ojda'
 			},
 			{
 				id: 3,
@@ -28,7 +30,8 @@ export const data = [
 				type: 'expens',
 				deal: 'credit',
 				group: 'utils',
-				date: '2023-11-11'
+				date: '2023-11-11',
+				report: 'theis kdfja ofadkl lpejf jpdjfas fkf asdfpaj kvksafja fasfksayivn ojda'
 			},
 			{
 				id: 4,
@@ -36,7 +39,8 @@ export const data = [
 				type: 'income',
 				deal: 'cash',
 				group: 'utils',
-				date: '2023-11-11'
+				date: '2023-11-11',
+				report: 'theis kdfja ofadkl lpejf jpdjfas fkf asdfpaj kvksafja fasfksayivn ojda'
 			}
 		]
 	}

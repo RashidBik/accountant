@@ -27,9 +27,9 @@
 				>
 			</div>
 			{#if active === 'income'}
-				<Group groups={incomeGroup} />
+				<Group groups={incomeGroup} type="income" />
 			{:else}
-				<Group groups={expensGroup} />
+				<Group groups={expensGroup} type="expens" />
 			{/if}
 		</div>
 	{:else}
