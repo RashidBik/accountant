@@ -7,7 +7,7 @@
 	];
 </script>
 
-<button on:click={() => history.go(-1)} class="text-xl fixed md:hidden top-8 left-8 text-white">
+<button on:click={() => history.go(-1)} class="text-xl fixed md:hidden top-3 right-8 text-white">
 	&leftarrow;
 </button>
 <div class="w-full h-full  flex flex-col items-center">

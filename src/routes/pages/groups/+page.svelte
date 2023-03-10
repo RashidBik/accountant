@@ -1,20 +1,13 @@
 <script>
-	import { goto } from '$app/navigation';
 	import { lang } from '$lib/store/lang';
 	import SearchBar from '../searchBar.svelte';
+	import Group from './group.svelte';
 
-	const group = [
-		{ group: 'food' },
-		{ group: 'jjjjjjjjjj' },
-		{ group: 'food' },
-		{ group: 'jjjjjjjjjj' },
-		{ group: 'food' },
-		{ group: 'jjjjjjjjjj' }
-	];
-	// let groups = content.map((group) => group.group);
-	//  Array.from(new Set(group));
-	const sortedGroup = group;
-	let auth = false;
+	export let data;
+	const { incomeGroup, expensGroup } = data;
+
+	let auth = true;
+	$: active = 'income';
 </script>
 
 <SearchBar />
@@ -22,20 +15,22 @@
 	{#if auth}
 		<div class="flex flex-col justify-center items-center w-full ">
 			<div class="flex justify-around p-2">
-				<div class="px-12 text-red-900">{$lang.groups[0]}</div>
-				<div class="px-12 text-green-900">{$lang.groups[1]}</div>
+				<button
+					on:click={() => (active = 'income')}
+					class="px-12 {active === 'income' ? 'bg-[#fff]' : ''} text-green-900"
+					>{$lang.groups[0]}</button
+				>
+				<button
+					on:click={() => (active = 'expens')}
+					class="px-12 {active === 'expens' ? 'bg-[#fff]' : ''} text-red-900"
+					>{$lang.groups[1]}</button
+				>
 			</div>
-			<div class="flex flex-wrap">
-				{#each sortedGroup && sortedGroup as item}
-					<!-- svelte-ignore a11y-click-events-have-key-events -->
-					<div
-						on:click={() => goto(`/pages/groups/${item.group}`)}
-						class="p-2 bg-lime-600 rounded-lg text-xl m-1"
-					>
-						{item.group}
-					</div>
-				{/each}
-			</div>
+			{#if active === 'income'}
+				<Group groups={incomeGroup} />
+			{:else}
+				<Group groups={expensGroup} />
+			{/if}
 		</div>
 	{:else}
 		<div>
