@@ -2,18 +2,18 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 
-	const data = {
-		id: 1,
-		group: 'A',
-		amount: 2000,
-		type: 'income',
-		date: '2023-11-11',
-		deal: 'cash',
-		report:
-			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe dolore reprehenderit dolorum distinctio voluptate autem, porro quod, fuga expedita praesentium adipisci quaerat quam sapiente dolores id odit. Ducimus, blanditiis sed.'
-	};
+	export let data;
+	let { group, item } = data;
+
 	$: visible = false;
 	$: toggleOpt = false;
+	const handlClick = () => {
+		toggleOpt = !toggleOpt;
+	};
+
+	const handlNewGroup = () => {
+		visible = !visible;
+	};
 </script>
 
 <button on:click={() => history.go(-1)} class="text-xl fixed md:hidden top-3 right-8 text-white">
@@ -21,10 +21,10 @@
 </button>
 <div class="flex flex-col p-3 h-full  justify-center items-center">
 	<form class="flex flex-col rounded-xl ">
-		<div class="text-center ">Insert Your Data</div>
+		<div class="text-center ">Update Your Data</div>
 		<div class="">
 			<div class="px-12 py-2  ">
-				<div class=" flex flex-col justify-evenly items-center rounded-xl border border-gray-100 ">
+				<div class=" flex flex-col justify-evenly items-center rounded-xl   ">
 					<label class="p-2 " for="amount">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -42,58 +42,59 @@
 						</svg>
 					</label>
 					<input
-						class="max-w-40  text-center outline-none bg-inherit"
+						class="max-w-40 underline text-center outline-none bg-inherit"
 						type="text"
 						name="amount"
+						value={item.amount}
 						placeholder="Insert Amount"
 					/>
 				</div>
 			</div>
 			<div class="flex justify-evenly">
 				<input
-					class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
+					class=" font-bold px-3 p-2 {item.type == 'income'
+						? 'bg-gray-500'
+						: ''} rounded-xl border border-gray-100"
 					type="button"
 					value="income"
 				/>
 				<input
-					class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
+					class=" font-bold px-3 p-2 {item.type == 'expens'
+						? 'bg-gray-500'
+						: ''} rounded-xl border border-gray-100"
 					type="button"
 					value="expens"
 				/>
 			</div>
 			<div class="px-12 py-4">
 				<div class="flex flex-col border border-gray-100 rounded-xl space-y-12">
-					<div class="flex select-none justify-between rounded-xl p-2 px-4  bg-inherit ">
-						<p />
-					</div>
+					<button
+						class="flex select-none justify-between rounded-xl p-2 px-4  bg-inherit "
+						on:click={(e) => (toggleOpt = true)}
+					>
+						<p>{item.group}</p>
+						{toggleOpt ? '-' : '+'}
+					</button>
 					<div
 						class=" absolute grid-cols-3 p-2 px-4 z-10 rounded-xl bg-[#222]"
-						style="display: {toggleOpt ? 'grid' : 'none'};"
+						style="display: {toggleOpt ? 'grid' : 'none'}"
 					>
-						<div class="m-1 w-16 h-8 text-center border border-gray-400 rounded-lg ">food</div>
-						<div class="m-1 w-16 h-8 text-center border border-gray-400 rounded-lg ">shirt</div>
-						<div class="m-1 w-16 h-8 text-center border border-gray-400 rounded-lg ">salary</div>
-						<div class="m-1 w-16 h-8 text-center border border-gray-400 rounded-lg ">home</div>
+						{#each group as content}
+							<button
+								class="m-1 w-16 h-8 text-center border border-gray-400 rounded-lg "
+								on:click={handlClick}
+							>
+								{content}
+							</button>
+						{/each}
+
 						<div class="m-1 w-16 h-8 text-center ">
-							<span style="display: {visible ? 'none' : 'flex'}">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke-width="1.5"
-									stroke="currentColor"
-									class="w-6 h-6"
-								>
-									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
-									/>
-								</svg>
-							</span>
-							<div style="display: {!visible ? 'none' : 'flex'}" class=" bg-inherit">
+							<button on:click={handlNewGroup} style=" display: {visible ? 'none' : 'flex'}"
+								>+</button
+							>
+							<div style="display: {!visible ? 'none' : 'flex'}" class=" bg-yellow-300 h-2 w-2 ">
 								<input
-									class=" absolute w-32 px-2 h-8 bg-none outline-none text-gray-900 "
+									class=" absolute w-12 px-2 h-8  outline-none text-gray-900 "
 									type="text"
 									placeholder="new group"
 								/>
