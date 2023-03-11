@@ -14,15 +14,15 @@
 <div class=" w-full h-full overflow-y-auto">
 	{#if auth}
 		<div class="flex flex-col justify-center items-center w-full ">
-			<div class="flex justify-around p-2">
+			<div class="flex justify-around w-full p-2">
 				<button
 					on:click={() => (active = 'income')}
-					class="px-12 {active === 'income' ? 'bg-[#fff]' : ''} text-green-900"
+					class="px-2 {active === 'income' ? 'bg-[#fff]' : ''} text-green-900"
 					>{$lang.groups[0]}</button
 				>
 				<button
 					on:click={() => (active = 'expens')}
-					class="px-12 {active === 'expens' ? 'bg-[#fff]' : ''} text-red-900"
+					class="px-2 {active === 'expens' ? 'bg-[#fff]' : ''} text-red-900"
 					>{$lang.groups[1]}</button
 				>
 			</div>

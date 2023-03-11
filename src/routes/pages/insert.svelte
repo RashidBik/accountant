@@ -1,8 +1,13 @@
 <script>
+	import { enhance } from '$app/forms';
+
+	// @ts-nocheck
+
 	import { fetched } from '$lib/store/data';
 
 	$: visible = false;
 	$: toggleOpt = false;
+	$: selectedGroup = '___';
 
 	const handlClick = () => {
 		toggleOpt = !toggleOpt;
@@ -14,9 +19,41 @@
 </script>
 
 <div class="flex flex-col p-3 h-[100vh] md:w-full">
-	<form class="flex flex-col rounded-xl ">
+	<form action="/pages" method="post" use:enhance class="flex flex-col rounded-xl ">
 		<div class="text-center ">Insert Your Data</div>
 		<div class="">
+			<div class="flex justify-evenly">
+				<label for="">Income</label>
+				<input
+					class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
+					type="radio"
+					value="income"
+					name="type"
+				/>
+				<label for="">Expense</label>
+				<input
+					class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
+					type="radio"
+					value="expens"
+					name="type"
+				/>
+			</div>
+			<div class="flex justify-evenly">
+				<label for="">Cash</label>
+				<input
+					class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
+					type="radio"
+					value="Cash"
+					name="deal"
+				/>
+				<label for="">Credit</label>
+				<input
+					class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
+					type="radio"
+					value="Credit"
+					name="deal"
+				/>
+			</div>
 			<div class="px-12 py-2  ">
 				<div class=" flex flex-col justify-evenly items-center rounded-xl border border-gray-100 ">
 					<label class="p-2 " for="amount">
@@ -43,25 +80,14 @@
 					/>
 				</div>
 			</div>
-			<div class="flex justify-evenly">
-				<input
-					class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
-					type="button"
-					value="income"
-				/>
-				<input
-					class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
-					type="button"
-					value="expens"
-				/>
-			</div>
+
 			<div class="px-12 py-4">
 				<div class="flex flex-col border border-gray-100 rounded-xl space-y-12">
 					<button
 						class="flex select-none justify-between rounded-xl p-2 px-4  bg-inherit "
 						on:click={() => (toggleOpt = !toggleOpt)}
 					>
-						<p>_ _</p>
+						<p>{selectedGroup}</p>
 						{toggleOpt ? '-' : '+'}
 					</button>
 
@@ -73,16 +99,18 @@
 							<input
 								class=" text-[11px] border-b border-[#ffffff30] mb-2 outline-none bg-inherit text-white "
 								type="text"
+								bind:value={selectedGroup}
 								placeholder="new group"
+								name="group"
 							/>
 						</div>
 
-						{#each $fetched as content}
+						{#each $fetched as item}
 							<button
 								class="m-1 w-16 h-8 text-center border border-gray-400 rounded-lg "
 								on:click={handlClick}
 							>
-								{content}
+								{item}
 							</button>
 						{/each}
 
@@ -94,14 +122,7 @@
 					</div>
 				</div>
 			</div>
-			<div class=" flex justify-center  p-2">
-				<p class="px-4 font-bold">Credit</p>
-				<label class="switch">
-					<input type="checkbox" />
-					<span class="slider round" />
-				</label>
-				<p class="px-4 font-bold">Cash</p>
-			</div>
+
 			<div class="px-12 flex justify-center ">
 				<textarea
 					class=" rounded-xl p-2 w-full bg-inherit border border-gray-100"
@@ -111,7 +132,7 @@
 			</div>
 			<div class="p-2  flex justify-center">
 				<div class="flex relative rounded-lg">
-					<input class="w-40  p-1 rounded-lg bg-inherit" type="date" />
+					<input class="w-40  p-1 rounded-lg bg-inherit" type="date" name="date" />
 					<span class=" absolute right-2">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"

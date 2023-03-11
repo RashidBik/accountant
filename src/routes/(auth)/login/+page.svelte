@@ -1,23 +1,28 @@
 <script>
+	import { page } from '$app/stores';
 	import { lang } from '$lib/store/lang';
 </script>
 
-<div class="px-4 py-8 h-[99vh] flex flex-col items-center mx-auto ">
-	<button on:click={() => history.go(-1)} class="text-xl fixed top-8 left-8 text-white">
+<div class="h-[99vh] pt-32">
+	<button on:click={() => history.go(-1)} class="text-xl fixed top-8 right-8 text-white">
 		&leftarrow;
 	</button>
-	<div class="px-8 text-sm">
-		<form class="flex flex-col rounded-xl max-w-sm justify-center items-center">
+	<div class="px-8 text-[8px] md:text-[14px]">
+		<form action="/login" method="post" class="flex flex-col rounded-xl max-w-sm justify-center ">
 			<div>{$lang.login[0]}</div>
+			<h1>{$page.form?.result.email}</h1>
 			<input
-				class="px-3 py-2 mt-4 rounded-xl text-gray-900"
+				class="p-2 mt-4 rounded-xl text-gray-900"
 				type="email"
+				name="email"
 				placeholder={$lang.login[1]}
 				required
 			/>
+
 			<input
-				class="px-3 py-2 mt-4 rounded-xl text-gray-900"
+				class="p-2 mt-4 rounded-xl text-gray-900"
 				type="password"
+				name="password"
 				placeholder={$lang.login[2]}
 				required
 			/>

@@ -4,7 +4,6 @@
 	import Insert from './insert.svelte';
 	import NewInser from './reports/newInser.svelte';
 	import Sidbar from './sidbar.svelte';
-	// import DiAngularSimple from 'svelte-icons/di/DiAngularSimple.svelte'/
 
 	let insert = false;
 	$: blur = '';
