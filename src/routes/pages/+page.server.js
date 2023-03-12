@@ -22,6 +22,6 @@ export const actions = {
 		const result = await response.json();
 		// console.log(result.newData);
 
-		return { message: result.msg };
+		return { result };
 	}
 };

@@ -1,15 +1,22 @@
 <script>
 	import { enhance } from '$app/forms';
+	import { page } from '$app/stores';
 
 	// @ts-nocheck
 
 	import { fetched } from '$lib/store/data';
 
+	/**
+	 * @type {any}
+	 */
+	export let handleInsert;
+
 	$: visible = false;
 	$: toggleOpt = false;
-	$: selectedGroup = '___';
+	$: selectedGroup = 'select_grp';
 
-	const handlClick = () => {
+	const handlClick = (/** @type {string} */ group) => {
+		selectedGroup = group;
 		toggleOpt = !toggleOpt;
 	};
 
@@ -18,6 +25,7 @@
 	};
 </script>
 
+<button type="button" on:click={handleInsert}>back</button>
 <div class="flex flex-col p-3 h-[100vh] md:w-full">
 	<form action="/pages" method="post" use:enhance class="flex flex-col rounded-xl ">
 		<div class="text-center ">Insert Your Data</div>
@@ -84,6 +92,7 @@
 			<div class="px-12 py-4">
 				<div class="flex flex-col border border-gray-100 rounded-xl space-y-12">
 					<button
+						type="button"
 						class="flex select-none justify-between rounded-xl p-2 px-4  bg-inherit "
 						on:click={() => (toggleOpt = !toggleOpt)}
 					>
@@ -95,28 +104,32 @@
 						class=" absolute flex-wrap p-2 max-w-[160px] z-10 rounded-xl bg-[#222]"
 						style="display: {toggleOpt ? 'flex' : 'none'}"
 					>
-						<div style="display: {!visible ? 'none' : 'flex'}" class=" flex-1 ">
+						<div style="display: {!visible ? 'none' : 'flex'}" class=" flex-1 min-w-40 ">
 							<input
-								class=" text-[11px] border-b border-[#ffffff30] mb-2 outline-none bg-inherit text-white "
+								class=" min-w-[100px] w-auto overflow-x-hidden text-[11px] border-b border-[#ffffff30] mb-2 outline-none bg-inherit text-white "
 								type="text"
 								bind:value={selectedGroup}
 								placeholder="new group"
 								name="group"
+								maxlength="16"
 							/>
 						</div>
 
-						{#each $fetched as item}
+						{#each $fetched as item, i}
 							<button
-								class="m-1 w-16 h-8 text-center border border-gray-400 rounded-lg "
-								on:click={handlClick}
+								type="button"
+								class="m-1 w-16 h-8 overflow-scroll text-center border border-gray-400 rounded-lg "
+								on:click={() => handlClick(item)}
 							>
 								{item}
 							</button>
 						{/each}
 
 						<div class="m-1 w-16 h-8 text-center ">
-							<button on:click={handlNewGroup} style=" display: {visible ? 'none' : 'flex'}"
-								>+</button
+							<button
+								type="button"
+								on:click={handlNewGroup}
+								style=" display: {visible ? 'none' : 'flex'}">+</button
 							>
 						</div>
 					</div>
@@ -133,22 +146,6 @@
 			<div class="p-2  flex justify-center">
 				<div class="flex relative rounded-lg">
 					<input class="w-40  p-1 rounded-lg bg-inherit" type="date" name="date" />
-					<span class=" absolute right-2">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke-width="1.5"
-							stroke="currentColor"
-							class="w-6 h-6"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z"
-							/>
-						</svg>
-					</span>
 				</div>
 			</div>
 		</div>
@@ -158,4 +155,9 @@
 			</div>
 		</div>
 	</form>
+	{#if $page.form?.result}
+		<div class="fixed bg-green-600 border border-white top-9 right-8 px-2 rounded ">
+			{$page.form?.result}
+		</div>
+	{/if}
 </div>

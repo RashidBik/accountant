@@ -11,6 +11,7 @@
 	// 		return new Date().getMonth(item.date) === choosedDate;
 	// 	});
 	// };
+	console.log('loaded');
 	let auth = true;
 </script>
 
@@ -42,12 +43,13 @@
 					<span>deal</span>
 					<span>group</span>
 				</div>
-				{#each contents as item (item.id)}
+				{#each contents && contents as item, i}
 					<div class="">
 						<!-- svelte-ignore a11y-click-events-have-key-events -->
 						<div
+							data-sveltekit-preload-data="hover"
 							on:click={() => goto(`/pages/${item.id}`)}
-							class="grid grid-cols-4 justify-around items-stretch "
+							class="grid grid-cols-4 justify-around items-stretch select-none cursor-pointer text-[10px] md:text-[13px] "
 							style="color: {item.type === 'income' ? 'green' : 'red'}"
 						>
 							<span class=" underline overflow-x-auto">{item.date}</span>

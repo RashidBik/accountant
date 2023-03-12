@@ -3,6 +3,7 @@
 
 <div class="container">
 	<h1>Wellcome Boo</h1>
+	<a href="/pages">lets go</a>
 </div>
 
 <style>

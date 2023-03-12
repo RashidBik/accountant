@@ -18,7 +18,7 @@
 		blur = '';
 	};
 	const bluring = () => (blur = 'blur');
-	const handleInsert = () => (insert = true);
+	const handleInsert = () => (insert = !insert);
 </script>
 
 <div class={insert ? 'flex' : ''}>
@@ -36,15 +36,17 @@
 		<footer
 			class=" md:hidden w-full flex justify-evenly bg-[cadetblue] pt-2 max-w-screen-md h-12 {blur} md:filter-none"
 		>
-			<a href="/pages/home" title={$lang.footer[2]}>Home</a>
-			<a href="/pages/reports" title={$lang.footer[1]}>Reports</a>
+			<a href="/pages" title={$lang.footer[2]}>Home</a>
+			<a data-sveltekit-preload-code="hover" href="/pages/reports" title={$lang.footer[1]}
+				>Reports</a
+			>
 			<a href="/pages/groups" title={$lang.footer[0]}>Groups</a>
 			<div class="md:flex hidden">insert</div>
 		</footer>
 	</main>
 	{#if insert}
 		<div class="fixed w-full md:relative md:w-[30%] bg-[cadetblue]">
-			<Insert />
+			<Insert {handleInsert} />
 		</div>
 	{/if}
 </div>

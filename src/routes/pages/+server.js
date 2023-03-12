@@ -4,8 +4,8 @@ import { json } from '@sveltejs/kit';
 // @ts-ignore
 export const POST = async ({ request }) => {
 	const { amount, type, group, deal, report, date } = await request.json();
-	const newData = data[0].contents.push({
-		id: 12,
+	data[0].contents.push({
+		id: data[0].contents.length + 1,
 		amount,
 		type,
 		deal,
@@ -13,6 +13,8 @@ export const POST = async ({ request }) => {
 		date,
 		report
 	});
-	console.log(newData);
-	return json({ msg: 'successfully saved new data', newData });
+
+	console.log(data[0].contents);
+
+	return json('successfully saved new data');
 };
