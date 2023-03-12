@@ -25,11 +25,14 @@
 	};
 </script>
 
-<button type="button" on:click={handleInsert}>back</button>
 <div class="flex flex-col p-3 h-[100vh] md:w-full">
 	<form action="/pages" method="post" use:enhance class="flex flex-col rounded-xl ">
-		<div class="text-center ">Insert Your Data</div>
-		<div class="">
+		<div class="text-center flex justify-between py-4 ">
+			<p />
+			<h1 class="">Insert Your Data</h1>
+			<button class="" type="button" on:click={handleInsert}>back</button>
+		</div>
+		<div class="mt-4">
 			<div class="flex justify-evenly">
 				<label for="">Income</label>
 				<input
@@ -149,15 +152,17 @@
 				</div>
 			</div>
 		</div>
-		<div class="py-8 px-12">
-			<div class="hover:border bg-green-700 border-gray-100  text-center  font-bold rounded-xl">
+		<div class=" px-12">
+			{#if $page.form?.result}
+				<div class="bg-green-600 border border-white px-2 rounded  ">
+					{$page.form?.result}
+				</div>
+			{/if}
+			<div
+				class="hover:border mt-3 bg-green-700 border-gray-100  text-center  font-bold rounded-xl"
+			>
 				<input type="submit" value="Save" />
 			</div>
 		</div>
 	</form>
-	{#if $page.form?.result}
-		<div class="fixed bg-green-600 border border-white top-9 right-8 px-2 rounded ">
-			{$page.form?.result}
-		</div>
-	{/if}
 </div>
