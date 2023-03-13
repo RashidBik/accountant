@@ -1,8 +1,10 @@
-export const data = [
+export let data = [
 	{
 		user: {
 			id: 1,
 			name: 'rashid',
+			job: 'web dev',
+			email: 'rashid@gmail.com',
 			password: 'abc123'
 		},
 		contents: [

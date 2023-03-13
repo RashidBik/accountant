@@ -1,13 +1,20 @@
 <script>
+	import { enhance } from '$app/forms';
+	import { page } from '$app/stores';
 	import { lang } from '$lib/store/lang';
 </script>
 
+<p class="text-white text-right">{$page.form?.result}</p>
 <div class="h-[99vh] flex justify-center items-center text-gray-900 px-3">
 	<button on:click={() => history.go(-1)} class="text-xl fixed top-8 left-8 text-white">
 		&leftarrow;
 	</button>
-
-	<form class=" bg-inherit border p-2 rounded-xl  text-sm">
+	<form
+		action="/register"
+		use:enhance
+		method="post"
+		class=" bg-inherit border p-2 rounded-xl  text-sm"
+	>
 		<div class="text-blue-400">
 			{$lang.register[0]}
 		</div>
@@ -16,6 +23,7 @@
 				class="px-3 py-2 w-full mt-4 rounded-xl "
 				placeholder={$lang.register[1]}
 				type="text"
+				name="name"
 				required
 			/>
 		</div>
@@ -24,6 +32,7 @@
 				class="px-3 py-2 w-full mt-4 rounded-xl "
 				placeholder={$lang.register[2]}
 				type="text"
+				name="job"
 				required
 			/>
 		</div>
@@ -32,6 +41,7 @@
 				class="px-3 py-2 w-full mt-4 rounded-xl "
 				placeholder={$lang.register[3]}
 				type="email"
+				name="email"
 				required
 			/>
 		</div>
@@ -40,6 +50,7 @@
 				class="px-3 py-2 w-full mt-4 rounded-xl "
 				placeholder={$lang.register[4]}
 				type="password"
+				name="password"
 				required
 			/>
 		</div>

@@ -1,4 +1,5 @@
 <script>
+	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 
@@ -30,10 +31,16 @@
 			<p class="p-2">Report</p>
 			<p class="p-2">{items && items.report}</p>
 		</div>
-		<div class="grid p-4">
-			<button on:click={() => goto(`/pages/${items.id}/update`)} class="p-1 py-2 rounded-xl"
+		<div class="flex justify-center">
+			<button on:click={() => goto(`/pages/${items.id}/update`)} class="px-4 bg-lime-800 rounded-xl"
 				>update</button
 			>
+			<form action="/pages/{items.id}" use:enhance method="post">
+				{#if $page.form?.result}
+					<p>{$page.form?.result}</p>
+				{/if}
+				<button type="submit" class="px-4 bg-red-800 rounded-xl">Delete</button>
+			</form>
 		</div>
 	</div>
 </div>

@@ -1,7 +1,7 @@
 /** @type {import('./$types').Actions} */
 
 export const actions = {
-	default: async ({ fetch, request }) => {
+	default: async ({ fetch, request, cookies }) => {
 		const form = await request.formData();
 		const amount = form.get('amount');
 		const type = form.get('type');
@@ -9,6 +9,10 @@ export const actions = {
 		const deal = form.get('deal');
 		const report = form.get('report');
 		const date = form.get('date');
+
+		const cookie = cookies.get('username');
+
+		console.log(cookie);
 
 		const response = await fetch('/pages', {
 			method: 'POST',
