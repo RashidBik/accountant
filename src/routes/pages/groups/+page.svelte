@@ -1,16 +1,15 @@
 <script>
-	// import SearchBar from '../searchBar.svelte';
 	import GroupData from './GroupData.svelte';
 
 	export let data;
+	const { auth } = data;
 </script>
 
-<!-- <SearchBar /> -->
 <svelte:head>
 	<title>Groups</title>
 </svelte:head>
 <div class=" w-full h-full overflow-y-auto">
-	{#if data.auth}
+	{#if auth}
 		<GroupData result={data.result} />
 	{:else}
 		<div class="p-4">
