@@ -31,42 +31,55 @@
 		<div class="text-center flex justify-center py-4 ">
 			<h1 class="">Update Your Data</h1>
 		</div>
-		<div class="mt-4">
-			<div class="flex justify-evenly">
-				<label for="">Income</label>
-				<input
-					class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
-					type="radio"
-					value="income"
-					checked={item.type === 'income'}
-					name="type"
-				/>
-				<label for="">Expense</label>
-				<input
-					class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
-					type="radio"
-					value="expens"
-					checked={item.type === 'expens'}
-					name="type"
-				/>
+		<div class="mt-4 mx-auto">
+			<div class="flex flex-col">
+				<div class="flex space-x-2 mx-auto">
+					<div class="px- bg-[#1f51266d] border px-3 py-1 rounded-md">
+						<label class="" for="">Income</label>
+						<input
+							class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
+							type="radio"
+							value="income"
+							checked={item.type === 'income'}
+							name="type"
+						/>
+					</div>
+					<div class="bg-[#57202055] border px-3 py-1  rounded-md">
+						<label class="" for="">Expense</label>
+						<input
+							class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
+							type="radio"
+							value="expens"
+							checked={item.type === 'expens'}
+							name="type"
+						/>
+					</div>
+				</div>
 			</div>
-			<div class="flex justify-evenly">
-				<label for="">Cash</label>
-				<input
-					class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
-					type="radio"
-					value="Cash"
-					checked={item.deal === 'Cash'}
-					name="deal"
-				/>
-				<label for="">Credit</label>
-				<input
-					class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
-					type="radio"
-					value="Credit"
-					checked={item.deal === 'Credit'}
-					name="deal"
-				/>
+
+			<div class="p-4 mt-1 ">
+				<div class="flex space-x-2 justify-center">
+					<div class="bg-[#ffffff3d] border rounded-md px-3 py-1">
+						<label for="">Cash</label>
+						<input
+							class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
+							type="radio"
+							value="Cash"
+							checked={item.deal === 'Cash'}
+							name="deal"
+						/>
+					</div>
+					<div class="bg-[#ffffff3d] border rounded-md px-3 py-1">
+						<label for="">Credit</label>
+						<input
+							class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
+							type="radio"
+							value="Credit"
+							checked={item.deal === 'Credit'}
+							name="deal"
+						/>
+					</div>
+				</div>
 			</div>
 			<div class="px-12 py-2  ">
 				<div class=" flex flex-col justify-evenly items-center rounded-xl border border-gray-100 ">
@@ -169,7 +182,7 @@
 				</div>
 			{/if}
 			<div
-				class="hover:border mt-3 bg-green-700 border-gray-100  text-center  font-bold rounded-xl"
+				class="hover:border py-1.5 mt-3 bg-green-700 border-gray-100  text-center  font-bold rounded-xl"
 			>
 				<input type="submit" value="Save" />
 			</div>

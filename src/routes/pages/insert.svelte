@@ -1,5 +1,4 @@
 <script>
-	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
 
 	// @ts-nocheck
@@ -25,45 +24,58 @@
 	};
 </script>
 
+<svelte:head><title>Insert</title></svelte:head>
 <div class="flex flex-col p-3 h-[100vh] md:w-full">
-	<form action="/pages" method="post" class="flex flex-col rounded-xl ">
-		<div class="text-center flex justify-between py-4 ">
-			<p />
-			<h1 class="">Insert Your Data</h1>
-			<button class="" type="button" on:click={handleInsert}>back</button>
+	<form action="/pages" method="post" class="flex flex-col rounded-xl max-w-md ">
+		<div class="text-center py-4 ">
+			<!-- <p /> -->
+			<h1 class=" font-bold text-xl py-4 ">Insert Your Data</h1>
+			<!-- <button class="" type="button" on:click={handleInsert}>back</button> -->
 		</div>
-		<div class="mt-4">
-			<div class="flex justify-evenly">
-				<label for="">Income</label>
-				<input
-					class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
-					type="radio"
-					value="income"
-					name="type"
-				/>
-				<label for="">Expense</label>
-				<input
-					class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
-					type="radio"
-					value="expens"
-					name="type"
-				/>
+		<div class="mx-auto">
+			<div class="flex flex-col ">
+				<div class="flex space-x-2 mx-auto">
+					<div class="px- bg-[#1f51266d] border px-3 py-1 rounded-md">
+						<label class="" for="">Income</label>
+						<input
+							class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
+							type="radio"
+							value="income"
+							name="type"
+						/>
+					</div>
+					<div class="bg-[#57202055] border px-3 py-1  rounded-md">
+						<label class="" for="">Expense</label>
+						<input
+							class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
+							type="radio"
+							value="expens"
+							name="type"
+						/>
+					</div>
+				</div>
 			</div>
-			<div class="flex justify-evenly">
-				<label for="">Cash</label>
-				<input
-					class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
-					type="radio"
-					value="Cash"
-					name="deal"
-				/>
-				<label for="">Credit</label>
-				<input
-					class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
-					type="radio"
-					value="Credit"
-					name="deal"
-				/>
+			<div class="p-4 mt-1 ">
+				<div class="flex space-x-2 justify-center">
+					<div class="bg-[#ffffff3d] border rounded-md px-3 py-1">
+						<label for="">Cash</label>
+						<input
+							class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
+							type="radio"
+							value="Cash"
+							name="deal"
+						/>
+					</div>
+					<div class="bg-[#ffffff3d] border rounded-md px-3 py-1">
+						<label for="">Credit</label>
+						<input
+							class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
+							type="radio"
+							value="Credit"
+							name="deal"
+						/>
+					</div>
+				</div>
 			</div>
 			<div class="px-12 py-2  ">
 				<div class=" flex flex-col justify-evenly items-center rounded-xl border border-gray-100 ">
@@ -147,19 +159,20 @@
 				/>
 			</div>
 			<div class="p-2  flex justify-center">
-				<div class="flex relative rounded-lg">
+				<div class="flex flex-col relative rounded-lg">
+					<p class="px-2 ">Select the date</p>
 					<input class="w-40  p-1 rounded-lg bg-inherit" type="date" name="date" />
 				</div>
 			</div>
 		</div>
 		<div class=" px-12">
-			{#if $page.form?.result}
-				<div class="bg-green-600 border border-white px-2 rounded  ">
-					{$page.form?.result}
+			{#if $page.form?.error}
+				<div class="bg-red-600 border border-white px-2 rounded  ">
+					{$page.form?.error}
 				</div>
 			{/if}
 			<div
-				class="hover:border mt-3 bg-green-700 border-gray-100  text-center  font-bold rounded-xl"
+				class="hover:border py-1.5 mt-3 bg-green-700 border-gray-100  text-center  font-bold rounded-xl"
 			>
 				<input type="submit" value="Save" />
 			</div>

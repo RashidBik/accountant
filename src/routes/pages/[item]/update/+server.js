@@ -22,7 +22,7 @@ export const POST = async ({ request, params }) => {
 		item.report = report;
 		item.date = date;
 	} else {
-		return json('there is somthing wrong with your id');
+		return json({ error: 'An Error Occured' });
 	}
-	return json('successfully updated');
+	return json({ success: true });
 };

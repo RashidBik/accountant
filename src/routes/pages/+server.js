@@ -13,8 +13,5 @@ export const POST = async ({ request }) => {
 		date,
 		report
 	});
-
-	console.log(data[0].contents);
-
-	return json('successfully saved new data');
+	return json({ succes: true });
 };

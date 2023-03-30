@@ -7,7 +7,7 @@
 
 <div class="flex flex-col ">
 	<div class="py-1">
-		<nav class="flex justify-evenly text-center font-bold lg:min-w-[10em] ">
+		<nav class="flex justify-evenly uppercase text-center font-bold lg:min-w-[10em] ">
 			<div class=" bg-[#26602b67] w-full ">
 				<p>{$lang.reports.calc[0]}</p>
 				<p>{income && income}</p>
@@ -24,7 +24,7 @@
 	</div>
 
 	<div class=" text-center  ">
-		<div class="flex justify-around bg-slate-600">
+		<div class="flex uppercase opacity-50 justify-around bg-slate-600">
 			<span> date </span>
 			<span>amount</span>
 			<span>deal</span>
@@ -36,7 +36,7 @@
 				<div
 					data-sveltekit-preload-data="hover"
 					on:click={() => goto(`/pages/${item.id}`)}
-					class="grid grid-cols-4 mt-2 justify-around items-stretch select-none cursor-pointer text-[10px] md:text-[13px] "
+					class="grid grid-cols-4 mt-2 justify-around hover:shadow-lg shadow-white items-stretch select-none cursor-pointer text-[10px] md:text-[13px] "
 					style="background: {item.type === 'income' ? '#26432057' : '#43202057'}"
 				>
 					<span class=" underline overflow-x-auto">{item.date}</span>

@@ -1,5 +1,5 @@
 /** @type {import('./$types').Actions} */
-// import { redirect } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
 
 export const actions = {
 	// @ts-ignore
@@ -23,6 +23,10 @@ export const actions = {
 		});
 		const result = await response.json();
 
-		return { result };
+		if (result.succes) {
+			throw redirect(302, '/pages/report');
+		} else {
+			return { error: 'An Error Occured' };
+		}
 	}
 };
