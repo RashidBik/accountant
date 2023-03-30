@@ -4,9 +4,8 @@
 	import Group from './group.svelte';
 
 	export let data;
-	const { incomeGroup, expensGroup } = data;
+	const { incomeGroup, expensGroup, auth } = data;
 
-	let auth = true;
 	$: active = 'income';
 </script>
 

@@ -8,7 +8,7 @@
 	/**
 	 * @type {any}
 	 */
-	export let auth = true;
+	export let auth;
 </script>
 
 <div>

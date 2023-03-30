@@ -1,7 +1,7 @@
 /** @type {import('./$types').Actions} */
 
 export const actions = {
-	default: async ({ fetch, request, cookies, locals }) => {
+	default: async ({ fetch, request, cookies }) => {
 		const form = await request.formData();
 		const email = form.get('email');
 		const password = form.get('password');
@@ -14,13 +14,13 @@ export const actions = {
 				'Content-Type': 'application/json'
 			}
 		});
-		console.log(locals.mydata);
+
 		const { result, message, auth } = await res.json();
 		if (!result) {
-			return { error: 'there is a problem with your email or password' };
+			return { error: 'Email or Password is not valid!!' };
 		}
 		if (auth) {
-			cookies.set('username', result, { path: '/' });
+			cookies.set('userxyz', result, { path: '/' });
 		}
 
 		return {

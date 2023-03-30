@@ -1,22 +1,18 @@
 <script>
-	import { goto, invalidateAll } from '$app/navigation';
+	// @ts-nocheck
+
+	import { goto } from '$app/navigation';
 	import { lang } from '$lib/store/lang';
 
 	export let data;
-	const { result, auth } = data;
-	const { contents, income, expens } = result;
-
-	// const sortDate = (choosedDate) => {
-	// 	const selectedData = content.filter((item) => {
-	// 		return new Date().getMonth(item.date) === choosedDate;
-	// 	});
-	// };
+	const { auth } = data;
+	if (auth) {
+		const {
+			result: { contents, income, expens }
+		} = data;
+	}
 </script>
 
-<!-- <button
-	on:click={invalidateAll}
-	class="fixed top-20 left-6 z-40 border rounded px-1 ring-2 :border-lime-400">Refresh</button
-> -->
 <div class=" flex flex-col items-center w-full h-full overflow-y-auto ">
 	{#if auth}
 		<!-- /////////////////////////// -->
@@ -69,11 +65,14 @@
 			<!-- /////////////////////////////// -->
 		</div>
 	{:else}
-		<p>
-			Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores earum pariatur modi quaerat
-			voluptate, possimus placeat! Soluta perferendis quis temporibus eligendi libero sapiente totam
-			consequuntur, nam odit magnam velit ducimus.
-		</p>
+		<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
+			<p class="font-bold">somt tening</p>
+			<p>
+				Lorem ipsum, dolor sit amet consectetur adipisicing elit. Blanditiis itaque dignissimos
+				provident alias, iure quisquam earum incidunt eaque modi accusantium ipsam veritatis
+				cupiditate quam ut cumque corrupti non. Vel, facilis!
+			</p>
+		</div>
 	{/if}
 </div>
 

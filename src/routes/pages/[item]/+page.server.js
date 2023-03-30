@@ -23,7 +23,7 @@ export async function load({ fetch, params, cookies }) {
 	const response = await fetch(`/pages/${params.item}`);
 	const items = await response.json();
 
-	const cc = cookies.get('username');
+	const cc = cookies.get('userxyz');
 
 	if (!cc) {
 		throw redirect(301, '/login');

@@ -1,20 +1,18 @@
 /** @type {import('./$types').PageServerLoad} */
 
-// import { redirect } from '@sveltejs/kit';
-
 // @ts-ignore
-export async function load({ fetch }) {
+export async function load({ fetch, cookies }) {
 	const response = await fetch('/pages/reports');
 	const result = await response.json();
-	// const cc = cookies.get('username');
-	// if (!cc) {
-	// throw redirect(301, '/login');
-	// } else {
-	return {
-		auth: true,
-		result
-	};
-	// }
-}
 
-// export const ssr = true;
+	const cc = cookies.get('userxyz');
+
+	if (!cc) {
+		return { auth: false };
+	} else {
+		return {
+			auth: true,
+			result
+		};
+	}
+}

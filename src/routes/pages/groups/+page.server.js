@@ -9,11 +9,12 @@ export async function load({ fetch, cookies }) {
 	//.................
 	let groups2 = expenses.map((/** @type {{ group: any; }} */ item) => item.group);
 	const expensGroup = Array.from(new Set(groups2));
-	const cc = cookies.get('username') === 'rashid';
+	const cc = cookies.get('userxyz');
 	if (!cc) {
-		return { auth: 'false' };
+		return { auth: false };
 	} else {
 		return {
+			auth: true,
 			incomeGroup,
 			expensGroup
 		};

@@ -29,14 +29,12 @@ export const actions = {
 
 // @ts-ignore
 export const load = ({ cookies }) => {
-	const cc = cookies.get('username');
-	console.log(cc);
-
-	// if (cc) {
-	// 	throw redirect(301, '/login');
-	// } else {
-	return {
-		auth: true
-	};
-	// }
+	const cc = cookies.get('userxyz');
+	if (!cc) {
+		return { auth: false };
+	} else {
+		return {
+			auth: true
+		};
+	}
 };
