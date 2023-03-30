@@ -1,6 +1,3 @@
-<script>
-</script>
-
 <div class="container">
 	<h1>Wellcome Boo</h1>
 	<a href="/pages">lets go</a>
@@ -8,7 +5,13 @@
 
 <style>
 	.container {
-		text-shadow: 2px 2px 2px burlywood;
-		height: 700px;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	a:hover {
+		font-weight: bold;
 	}
 </style>

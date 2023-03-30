@@ -7,16 +7,16 @@
 
 <div class="flex flex-col ">
 	<div class="py-1">
-		<nav class="flex justify-evenly font-bold min-w-min lg:min-w-[10em]">
-			<div class="text-green-800">
+		<nav class="flex justify-evenly text-center font-bold lg:min-w-[10em] ">
+			<div class=" bg-[#26602b67] w-full ">
 				<p>{$lang.reports.calc[0]}</p>
 				<p>{income && income}</p>
 			</div>
-			<div class="text-red-800">
+			<div class=" bg-[#71282885] w-full ">
 				<p>{$lang.reports.calc[1]}</p>
 				<p>{expens && expens}</p>
 			</div>
-			<div class="text-blue-800">
+			<div class=" bg-[#3198a072] w-full">
 				<p>{$lang.reports.calc[2]}</p>
 				<p>{income - expens}</p>
 			</div>
@@ -36,8 +36,8 @@
 				<div
 					data-sveltekit-preload-data="hover"
 					on:click={() => goto(`/pages/${item.id}`)}
-					class="grid grid-cols-4 justify-around items-stretch select-none cursor-pointer text-[10px] md:text-[13px] "
-					style="color: {item.type === 'income' ? 'green' : 'red'}"
+					class="grid grid-cols-4 mt-2 justify-around items-stretch select-none cursor-pointer text-[10px] md:text-[13px] "
+					style="background: {item.type === 'income' ? '#26432057' : '#43202057'}"
 				>
 					<span class=" underline overflow-x-auto">{item.date}</span>
 					<span class="overflow-x-auto {item.amount >= 999999 && 'border-r'}">
@@ -51,5 +51,4 @@
 			</div>
 		{/each}
 	</div>
-	<!-- /////////////////////////////// -->
 </div>

@@ -7,12 +7,12 @@
 	export let form;
 </script>
 
-<div class="h-[99vh] pt-32">
+<div class="h-[99vh] pt-32 flex flex-col ">
 	<button on:click={() => history.go(-1)} class="text-xl fixed top-8 right-8 ">
 		&leftarrow;
 	</button>
-	<div class="px-8 text-[8px] md:text-[14px]">
-		<form action="/login" method="post" class="flex flex-col rounded-xl max-w-sm justify-center ">
+	<div class=" text-[8px] md:text-[14px] mx-auto">
+		<form action="/login" method="post" class="flex flex-col rounded-xl  justify-center ">
 			<div>{$lang.login[0]}</div>
 			<h1>{form?.result || ''}</h1>
 			<h3>{form?.message || ''}</h3>

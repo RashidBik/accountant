@@ -11,11 +11,15 @@
 	<div class="flex justify-around w-full p-2">
 		<button
 			on:click={() => (active = 'income')}
-			class="px-2 {active === 'income' ? 'bg-[#fff]' : ''} text-green-900">{$lang.groups[0]}</button
+			class="px-2 {active === 'income'
+				? 'underline uppercase'
+				: ''} w-full bg-[#26602b67] p-2 text-green-900">{$lang.groups[0]}</button
 		>
 		<button
 			on:click={() => (active = 'expens')}
-			class="px-2 {active === 'expens' ? 'bg-[#fff]' : ''} text-red-900">{$lang.groups[1]}</button
+			class="px-2 {active === 'expens'
+				? 'underline uppercase'
+				: ''} w-full bg-[#71282885] p-2 text-red-900">{$lang.groups[1]}</button
 		>
 	</div>
 	{#if active === 'income'}

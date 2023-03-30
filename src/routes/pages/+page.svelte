@@ -3,15 +3,19 @@
 	let { auth } = data;
 </script>
 
+<svelte:head>
+	<title>Home</title>
+</svelte:head>
 <div class=" w-full h-full overflow-y-auto ">
 	{#if auth}
 		<p>Chart</p>
 	{:else}
-		<p>
-			Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores earum pariatur modi quaerat
-			voluptate, possimus placeat! Soluta perferendis quis temporibus eligendi libero sapiente totam
-			consequuntur, nam odit magnam velit ducimus.
-		</p>
+		<div class="p-4">
+			<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
+				<p class="font-bold">Notice !!!</p>
+				<p>Please login first</p>
+			</div>
+		</div>
 	{/if}
 </div>
 

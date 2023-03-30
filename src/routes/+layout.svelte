@@ -1,7 +1,7 @@
 <script>
 	import { setContext } from 'svelte';
-
 	import './styles.css';
+
 	let mode = 'dark';
 	$: dark = false;
 	$: dark ? (mode = 'light') : (mode = 'dark');
@@ -12,6 +12,3 @@
 </script>
 
 <div class={mode}><slot /></div>
-
-<style>
-</style>

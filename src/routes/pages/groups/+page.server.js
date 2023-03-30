@@ -11,7 +11,7 @@ export async function load({ fetch, cookies }) {
 	const expensGroup = Array.from(new Set(groups2));
 	const cc = cookies.get('userxyz');
 	if (!cc) {
-		return { auth: false };
+		return { result: null, auth: false };
 	} else {
 		return {
 			auth: true,

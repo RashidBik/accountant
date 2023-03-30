@@ -1,20 +1,23 @@
 <script>
-	import SearchBar from '../searchBar.svelte';
+	// import SearchBar from '../searchBar.svelte';
 	import GroupData from './GroupData.svelte';
 
 	export let data;
-	const { result, auth } = data;
 </script>
 
-<SearchBar />
+<!-- <SearchBar /> -->
+<svelte:head>
+	<title>Groups</title>
+</svelte:head>
 <div class=" w-full h-full overflow-y-auto">
-	{#if auth}
-		<GroupData {result} />
+	{#if data.auth}
+		<GroupData result={data.result} />
 	{:else}
-		<div>
-			Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit dolores quis placeat. Sed,
-			laboriosam minima! Aliquam sint voluptates illum nam hic molestiae porro nesciunt maxime, et
-			qui. Sed, quod iure.
+		<div class="p-4">
+			<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
+				<p class="font-bold">Notice !!!</p>
+				<p>Please login first</p>
+			</div>
 		</div>
 	{/if}
 </div>

@@ -5,15 +5,19 @@
 	const { result, auth } = data;
 </script>
 
-<div class=" flex flex-col items-center w-full h-full overflow-y-auto ">
+<svelte:head>
+	<title>Reports</title>
+</svelte:head>
+<div class=" flex flex-col overflow-y-auto ">
 	{#if auth}
 		<Data {result} />
 	{:else}
-		<p>
-			Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores earum pariatur modi quaerat
-			voluptate, possimus placeat! Soluta perferendis quis temporibus eligendi libero sapiente totam
-			consequuntur, nam odit magnam velit ducimus.
-		</p>
+		<div class="p-4">
+			<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
+				<p class="font-bold">Notice !!!</p>
+				<p>Please login first</p>
+			</div>
+		</div>
 	{/if}
 </div>
 
