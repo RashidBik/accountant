@@ -5,7 +5,10 @@
 	 * @type {any}
 	 */
 	export let handleInsert;
-	let auth = false;
+	/**
+	 * @type {any}
+	 */
+	export let auth = true;
 </script>
 
 <div>

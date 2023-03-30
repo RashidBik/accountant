@@ -2,6 +2,7 @@
 	// @ts-nocheck
 
 	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 	import Lang from '$lib/settings/lang.svelte';
 	import Profile from '$lib/settings/profile.svelte';
 	import Theme from '$lib/settings/theme.svelte';

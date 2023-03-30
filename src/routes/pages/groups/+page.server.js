@@ -1,6 +1,6 @@
-/** @type {import('./$types').PageLoad} */
+/** @type {import('./$types').PageServerLoad} */
 
-export async function load({ fetch }) {
+export async function load({ fetch, cookies }) {
 	const response = await fetch('http://localhost:5173/pages/groups');
 	const result = await response.json();
 	const { incomes, expenses } = result;
@@ -9,9 +9,13 @@ export async function load({ fetch }) {
 	//.................
 	let groups2 = expenses.map((/** @type {{ group: any; }} */ item) => item.group);
 	const expensGroup = Array.from(new Set(groups2));
-
-	return {
-		incomeGroup,
-		expensGroup
-	};
+	const cc = cookies.get('username') === 'rashid';
+	if (!cc) {
+		return { auth: 'false' };
+	} else {
+		return {
+			incomeGroup,
+			expensGroup
+		};
+	}
 }

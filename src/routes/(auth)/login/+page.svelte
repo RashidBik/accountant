@@ -5,6 +5,7 @@
 	 * @type {{ result: any; message: any; error: any; }}
 	 */
 	export let form;
+	// console.log(form?.auth);
 </script>
 
 <div class="h-[99vh] pt-32">

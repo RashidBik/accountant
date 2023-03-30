@@ -1,7 +1,9 @@
 /** @type {import('./$types').Actions} */
+// import { redirect } from '@sveltejs/kit';
 
 export const actions = {
-	default: async ({ fetch, request, cookies }) => {
+	// @ts-ignore
+	default: async ({ fetch, request }) => {
 		const form = await request.formData();
 		const amount = form.get('amount');
 		const type = form.get('type');
@@ -9,10 +11,6 @@ export const actions = {
 		const deal = form.get('deal');
 		const report = form.get('report');
 		const date = form.get('date');
-
-		const cookie = cookies.get('username');
-
-		console.log(cookie);
 
 		const response = await fetch('/pages', {
 			method: 'POST',
@@ -24,8 +22,21 @@ export const actions = {
 			}
 		});
 		const result = await response.json();
-		// console.log(result.newData);
 
 		return { result };
 	}
+};
+
+// @ts-ignore
+export const load = ({ cookies }) => {
+	const cc = cookies.get('username');
+	console.log(cc);
+
+	// if (cc) {
+	// 	throw redirect(301, '/login');
+	// } else {
+	return {
+		auth: true
+	};
+	// }
 };

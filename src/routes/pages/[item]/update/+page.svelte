@@ -27,12 +27,7 @@
 	&leftarrow;
 </button>
 <div class="flex flex-col p-3 h-[100vh] md:w-full">
-	<form
-		action="/pages/{item.id}/update"
-		method="post"
-		use:enhance
-		class="flex flex-col rounded-xl "
-	>
+	<form action="/pages/{item.id}/update" method="post" class="flex flex-col rounded-xl ">
 		<div class="text-center flex justify-center py-4 ">
 			<h1 class="">Update Your Data</h1>
 		</div>

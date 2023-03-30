@@ -1,3 +1,5 @@
+import { redirect } from '@sveltejs/kit';
+
 /** @type {import('./$types').Actions} */
 export const actions = {
 	default: async ({ fetch, params }) => {
@@ -17,11 +19,18 @@ export const actions = {
 };
 
 // @ts-ignore
-export async function load({ fetch, params }) {
+export async function load({ fetch, params, cookies }) {
 	const response = await fetch(`/pages/${params.item}`);
 	const items = await response.json();
 
-	return {
-		items
-	};
+	const cc = cookies.get('username');
+
+	if (!cc) {
+		throw redirect(301, '/login');
+	} else {
+		return {
+			auth: true,
+			items
+		};
+	}
 }

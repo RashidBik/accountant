@@ -5,6 +5,13 @@
 	import NewInser from './reports/newInser.svelte';
 	import Sidbar from './sidbar.svelte';
 
+	export let data;
+
+	// @ts-ignore
+	let { auth } = data;
+
+	console.log(auth);
+
 	let insert = false;
 	$: blur = '';
 	$: sidbar = 'hidden';
@@ -50,7 +57,7 @@
 		</div>
 	{/if}
 </div>
-<div class="fixed md:hidden {blur === 'blur' && 'hidden'} "><NewInser {handleInsert} /></div>
+<div class="fixed md:hidden {blur === 'blur' && 'hidden'} "><NewInser {auth} {handleInsert} /></div>
 
 <style>
 	.blur {

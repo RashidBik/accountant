@@ -1,5 +1,6 @@
 <script>
-	let auth = false;
+	export let data;
+	let { auth } = data;
 </script>
 
 <div class=" w-full h-full overflow-y-auto ">

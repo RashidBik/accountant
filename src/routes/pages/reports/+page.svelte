@@ -1,9 +1,9 @@
 <script>
-	import { goto } from '$app/navigation';
+	import { goto, invalidateAll } from '$app/navigation';
 	import { lang } from '$lib/store/lang';
 
 	export let data;
-	const { result } = data;
+	const { result, auth } = data;
 	const { contents, income, expens } = result;
 
 	// const sortDate = (choosedDate) => {
@@ -11,10 +11,12 @@
 	// 		return new Date().getMonth(item.date) === choosedDate;
 	// 	});
 	// };
-	console.log('loaded');
-	let auth = true;
 </script>
 
+<!-- <button
+	on:click={invalidateAll}
+	class="fixed top-20 left-6 z-40 border rounded px-1 ring-2 :border-lime-400">Refresh</button
+> -->
 <div class=" flex flex-col items-center w-full h-full overflow-y-auto ">
 	{#if auth}
 		<!-- /////////////////////////// -->

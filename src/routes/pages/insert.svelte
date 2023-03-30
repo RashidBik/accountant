@@ -26,7 +26,7 @@
 </script>
 
 <div class="flex flex-col p-3 h-[100vh] md:w-full">
-	<form action="/pages" method="post" use:enhance class="flex flex-col rounded-xl ">
+	<form action="/pages" method="post" class="flex flex-col rounded-xl ">
 		<div class="text-center flex justify-between py-4 ">
 			<p />
 			<h1 class="">Insert Your Data</h1>

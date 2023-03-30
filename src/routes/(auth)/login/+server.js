@@ -17,6 +17,7 @@ export const POST = async ({ request }) => {
 
 	return json({
 		result: userEmail.user.name,
+		auth: true,
 		message: 'Checked successfully and you are authenticated now'
 	});
 };
