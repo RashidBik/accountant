@@ -1,6 +1,3 @@
-<script>
-</script>
-
 <main class=" absolute z-20 w-full h-full md:h-40 md:w-40 p-4 ">
 	<div>
 		<div class=" ">

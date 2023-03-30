@@ -1,15 +1,14 @@
 <script>
-	import { page } from '$app/stores';
+	// import { page } from '$app/stores';
 	import { lang } from '$lib/store/lang';
 	/**
 	 * @type {{ result: any; message: any; error: any; }}
 	 */
 	export let form;
-	// console.log(form?.auth);
 </script>
 
 <div class="h-[99vh] pt-32">
-	<button on:click={() => history.go(-1)} class="text-xl fixed top-8 right-8 text-white">
+	<button on:click={() => history.go(-1)} class="text-xl fixed top-8 right-8 ">
 		&leftarrow;
 	</button>
 	<div class="px-8 text-[8px] md:text-[14px]">
@@ -18,15 +17,14 @@
 			<h1>{form?.result || ''}</h1>
 			<h3>{form?.message || ''}</h3>
 			<input
-				class="p-2 mt-4 rounded-xl text-gray-900"
+				class="p-2 mt-4 rounded-xl "
 				type="email"
 				name="email"
 				placeholder={$lang.login[1]}
 				required
 			/>
-
 			<input
-				class="p-2 mt-4 rounded-xl text-gray-900"
+				class="p-2 mt-4 rounded-xl "
 				type="password"
 				name="password"
 				placeholder={$lang.login[2]}
@@ -42,10 +40,9 @@
 	<p class="text-center text-[11px] text-red-500">{form?.error || ''}</p>
 	<div>
 		<p class="text-[8px] p-8 text-center">
-			if you don't have an account already click to &RightArrow; <a
-				class="text-bold  underline text-green-400"
-				href="/register">Register</a
-			> and create one
+			if you don't have an account already click to &RightArrow;
+			<a class="text-bold  underline text-green-400" href="/register">Register</a>
+			and create one
 		</p>
 	</div>
 </div>

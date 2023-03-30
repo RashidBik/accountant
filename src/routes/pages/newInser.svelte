@@ -1,6 +1,5 @@
 <script>
 	import { goto } from '$app/navigation';
-
 	/**
 	 * @type {any}
 	 */
@@ -9,7 +8,6 @@
 	 * @type {any}
 	 */
 	export let auth;
-	console.log(auth);
 </script>
 
 <div>
