@@ -9,6 +9,7 @@
 	 * @type {any}
 	 */
 	export let auth;
+	console.log(auth);
 </script>
 
 <div>

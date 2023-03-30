@@ -72,7 +72,9 @@
 					<Theme />
 				</div>
 			</div>
-			<button class="md:hidden" on:click={() => (active = null)}>Logout</button>
+			<form action="/logout" method="post">
+				<button>Logout</button>
+			</form>
 		</div>
 	</div>
 	<div class=" md:flex md:justify-center  w-full md:p-2 ">

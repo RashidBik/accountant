@@ -2,15 +2,11 @@
 	import { lang } from '$lib/store/lang';
 	import { setContext } from 'svelte';
 	import Insert from './insert.svelte';
-	import NewInser from './reports/newInser.svelte';
+	import NewInser from './newInser.svelte';
 	import Sidbar from './sidbar.svelte';
 
 	export let data;
-
-	// @ts-ignore
-	let { auth } = data;
-
-	console.log(auth);
+	const { auth } = data;
 
 	let insert = false;
 	$: blur = '';
@@ -26,6 +22,9 @@
 	};
 	const bluring = () => (blur = 'blur');
 	const handleInsert = () => (insert = !insert);
+
+	const navs = ['home', 'report', 'group'];
+	$: active = navs[0];
 </script>
 
 <div class={insert ? 'flex' : ''}>
@@ -43,11 +42,25 @@
 		<footer
 			class=" md:hidden w-full flex justify-evenly bg-[cadetblue] pt-2 max-w-screen-md h-12 {blur} md:filter-none"
 		>
-			<a href="/pages" title={$lang.footer[2]}>Home</a>
-			<a data-sveltekit-preload-code="hover" href="/pages/reports" title={$lang.footer[1]}
-				>Reports</a
+			<a
+				class:active={active === 'home'}
+				on:click={() => (active = navs[0])}
+				href="/pages"
+				title={$lang.footer[2]}>Home</a
 			>
-			<a href="/pages/groups" title={$lang.footer[0]}>Groups</a>
+			<a
+				class:active={active === 'report'}
+				on:click={() => (active = navs[1])}
+				data-sveltekit-preload-code="hover"
+				href="/pages/reports"
+				title={$lang.footer[1]}>Reports</a
+			>
+			<a
+				class:active={active === 'group'}
+				on:click={() => (active = navs[2])}
+				href="/pages/groups"
+				title={$lang.footer[0]}>Groups</a
+			>
 			<div class="md:flex hidden">insert</div>
 		</footer>
 	</main>
@@ -60,6 +73,9 @@
 <div class="fixed md:hidden {blur === 'blur' && 'hidden'} "><NewInser {auth} {handleInsert} /></div>
 
 <style>
+	.active {
+		text-shadow: 2px 2px 2px rgba(47, 46, 43, 0.853);
+	}
 	.blur {
 		filter: blur(10px);
 	}

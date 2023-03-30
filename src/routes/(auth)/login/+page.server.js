@@ -1,4 +1,5 @@
 /** @type {import('./$types').Actions} */
+import { redirect } from '@sveltejs/kit';
 
 export const actions = {
 	default: async ({ fetch, request, cookies }) => {
@@ -15,17 +16,13 @@ export const actions = {
 			}
 		});
 
-		const { result, message, auth } = await res.json();
+		const { result, auth } = await res.json();
 		if (!result) {
 			return { error: 'Email or Password is not valid!!' };
 		}
 		if (auth) {
 			cookies.set('userxyz', result, { path: '/' });
+			throw redirect(302, '/pages');
 		}
-
-		return {
-			result,
-			message
-		};
 	}
 };

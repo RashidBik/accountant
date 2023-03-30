@@ -8,7 +8,7 @@ export async function load({ fetch, cookies }) {
 	const cc = cookies.get('userxyz');
 
 	if (!cc) {
-		return { auth: false };
+		return { result: null, auth: false };
 	} else {
 		return {
 			auth: true,

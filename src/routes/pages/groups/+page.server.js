@@ -15,8 +15,7 @@ export async function load({ fetch, cookies }) {
 	} else {
 		return {
 			auth: true,
-			incomeGroup,
-			expensGroup
+			result: { incomeGroup, expensGroup }
 		};
 	}
 }
