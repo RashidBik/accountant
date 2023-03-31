@@ -52,7 +52,7 @@
 		<div class="md:flex w-full md:justify-center md:space-x-8 ">
 			<button on:click={handleAccount}>Account</button>
 			<div class="hidden md:flex ">
-				<a class="px-4" href="/pages/home" title={$lang.footer[2]}>Home</a>
+				<a class="px-4" href="/pages" title={$lang.footer[2]}>Home</a>
 				<a class="px-4" href="/pages/reports" title={$lang.footer[1]}>Reports</a>
 				<a class="px-4" href="/pages/groups" title={$lang.footer[0]}>Groups</a>
 				<button on:click={handleInsert} class="px-4 {insert ? 'hidden' : 'text-lime-900'}"
