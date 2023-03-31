@@ -18,5 +18,9 @@ export const POST = async ({ request }) => {
 
 	const user = data.find((user) => user.user.email == email);
 
-	return json(user?.user.name);
+	if (user) {
+		return json({ success: true });
+	} else {
+		return json({ error: 'An Error Occurred!!' });
+	}
 };

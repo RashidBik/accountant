@@ -1,4 +1,6 @@
 /** @type {import('./$types').Actions} */
+import { redirect } from '@sveltejs/kit';
+
 export const actions = {
 	default: async ({ fetch, request }) => {
 		const form = await request.formData();
@@ -18,6 +20,10 @@ export const actions = {
 
 		const result = await response.json();
 
-		return { result };
+		if (result.success) {
+			throw redirect(302, '/login');
+		} else {
+			return { result: result.error };
+		}
 	}
 };
