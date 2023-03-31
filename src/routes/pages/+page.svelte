@@ -9,9 +9,9 @@
 	<title>Home</title>
 </svelte:head>
 
-<div class=" w-full h-full overflow-y-auto ">
+<div class=" flex flex-col items-center h-full mx-auto ">
 	{#if auth}
-		<div class="p-12">
+		<div class=" w-[75%] md:w-[30%]">
 			<Chart chart={data.chart} />
 		</div>
 	{:else}

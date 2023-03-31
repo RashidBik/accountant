@@ -21,12 +21,14 @@
 				type="email"
 				name="email"
 				placeholder={$lang.login[1]}
+				value="test@example.com"
 				required
 			/>
 			<input
 				class="p-2 mt-4 rounded-xl "
 				type="password"
 				name="password"
+				value="abc123"
 				placeholder={$lang.login[2]}
 				required
 			/>

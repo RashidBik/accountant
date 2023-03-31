@@ -4,7 +4,7 @@ export let data = [
 			id: 1,
 			name: 'rashid',
 			job: 'web dev',
-			email: 'rashid@gmail.com',
+			email: 'test@example.com',
 			password: 'abc123'
 		},
 		contents: [
@@ -13,16 +13,16 @@ export let data = [
 				amount: 2220,
 				type: 'income',
 				deal: 'cash',
-				group: 'farm',
+				group: 'Seal',
 				date: '2023-11-11',
 				report: 'theis kdfja ofadkl lpejf jpdjfas fkf asdfpaj kvksafja fasfksayivn ojda'
 			},
 			{
 				id: 2,
-				amount: 220,
+				amount: 10000,
 				type: 'income',
 				deal: 'cash',
-				group: 'food',
+				group: 'Salary',
 				date: '2023-11-11',
 				report: 'theis kdfja ofadkl lpejf jpdjfas fkf asdfpaj kvksafja fasfksayivn ojda'
 			},
@@ -37,10 +37,19 @@ export let data = [
 			},
 			{
 				id: 4,
-				amount: 30,
+				amount: 300,
 				type: 'income',
 				deal: 'cash',
-				group: 'utils',
+				group: 'Hand Made',
+				date: '2023-11-11',
+				report: 'theis kdfja ofadkl lpejf jpdjfas fkf asdfpaj kvksafja fasfksayivn ojda'
+			},
+			{
+				id: 5,
+				amount: 220,
+				type: 'expens',
+				deal: 'credit',
+				group: 'Transport',
 				date: '2023-11-11',
 				report: 'theis kdfja ofadkl lpejf jpdjfas fkf asdfpaj kvksafja fasfksayivn ojda'
 			}
