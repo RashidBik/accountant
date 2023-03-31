@@ -11,7 +11,7 @@
 
 <div class=" w-full h-full overflow-y-auto ">
 	{#if auth}
-		<div class="p-6">
+		<div class="p-12">
 			<Chart chart={data.chart} />
 		</div>
 	{:else}

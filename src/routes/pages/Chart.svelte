@@ -36,5 +36,5 @@
 </script>
 
 <div>
-	<canvas bind:this={myChart} class=" bg-[#ffffff0a] shadow-md" />
+	<canvas bind:this={myChart} class="  shadow-md" />
 </div>
