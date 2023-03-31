@@ -13,7 +13,7 @@ export let data = [
 				amount: 2220,
 				type: 'income',
 				deal: 'cash',
-				group: 'food',
+				group: 'farm',
 				date: '2023-11-11',
 				report: 'theis kdfja ofadkl lpejf jpdjfas fkf asdfpaj kvksafja fasfksayivn ojda'
 			},

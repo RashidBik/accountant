@@ -11,7 +11,7 @@
 	<button on:click={() => history.go(-1)} class="text-xl fixed top-8 right-8 ">
 		&leftarrow;
 	</button>
-	<div class="  md:text-[14px] mx-auto  w-full px-12">
+	<div class="  md:text-[14px] mx-auto  max-w-md w-full px-12">
 		<form action="/login" method="post" class="flex flex-col rounded-xl  justify-center ">
 			<div>{$lang.login[0]}</div>
 			<h1>{form?.result || ''}</h1>

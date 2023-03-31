@@ -15,3 +15,16 @@ export const POST = async ({ request }) => {
 	});
 	return json({ succes: true });
 };
+
+export const GET = async () => {
+	let groups = data[0].contents.map((/** @type {{ group: any; }} */ item) => item.group);
+	const group = Array.from(new Set(groups));
+	let numbers = [];
+	for (let i = 0; i < group.length; i++) {
+		// const element = group[i];
+		const items = data[0].contents.filter((item) => item.group === group[i]);
+		numbers.push(items.map((item) => item.amount));
+	}
+
+	return json({ name: group, numbers: numbers.flat() });
+};

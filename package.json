@@ -35,6 +35,8 @@
 	"type": "module",
 	"dependencies": {
 		"@prisma/client": "^4.10.1",
-		"mongoose": "^6.8.4"
+		"chart.js": "^4.2.1",
+		"mongoose": "^6.8.4",
+		"svelte-chartjs": "^3.1.2"
 	}
 }

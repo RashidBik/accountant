@@ -30,3 +30,14 @@ export const actions = {
 		}
 	}
 };
+
+export const load = async ({ fetch }) => {
+	const response = await fetch('/pages');
+	const result = await response.json();
+
+	const numbers = result.numbers;
+	const names = result.name;
+	return {
+		chart: { numbers, names }
+	};
+};

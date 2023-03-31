@@ -8,6 +8,16 @@
 		// @ts-ignore
 		lang.set(Fa);
 	};
+	$: active = false;
+	const language = () => {
+		active != active;
+		if (active) {
+			// @ts-ignore
+			lang.set(Fa);
+		} else {
+			lang.set(En);
+		}
+	};
 </script>
 
 <div class="">
@@ -20,7 +30,7 @@
 		<button class="border px-2 rounded-lg" on:click={handleEn}>english</button>
 	</div>
 	<div class="hidden md:flex">
-		<button on:click={handleFa}>farsi</button>
-		<button on:click={handleEn}>english</button>
+		<!-- <button on:click={handleFa}>E&ENG;</button> -->
+		<button class=" underline text-white" on:click={language}>Lng</button>
 	</div>
 </div>
