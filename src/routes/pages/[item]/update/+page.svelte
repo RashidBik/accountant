@@ -27,7 +27,12 @@
 	&leftarrow;
 </button>
 <div class="flex flex-col p-3 h-[100vh] md:w-full">
-	<form action="/pages/{item.id}/update" method="post" class="flex flex-col rounded-xl ">
+	<form
+		use:enhance
+		action="/pages/{item._id}/update"
+		method="post"
+		class="flex flex-col rounded-xl "
+	>
 		<div class="text-center flex justify-center py-4 ">
 			<h1 class="">Update Your Data</h1>
 		</div>
@@ -64,8 +69,8 @@
 						<input
 							class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
 							type="radio"
-							value="Cash"
-							checked={item.deal === 'Cash'}
+							value="cash"
+							checked={item.deal === 'cash'}
 							name="deal"
 						/>
 					</div>
@@ -74,8 +79,8 @@
 						<input
 							class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
 							type="radio"
-							value="Credit"
-							checked={item.deal === 'Credit'}
+							value="credit"
+							checked={item.deal === 'credit'}
 							name="deal"
 						/>
 					</div>
@@ -164,7 +169,7 @@
 					value={item.report}
 				/>
 			</div>
-			<div class="p-2  flex justify-center">
+			<!-- <div class="p-2  flex justify-center">
 				<div class="flex relative rounded-lg">
 					<input
 						class="w-40  p-1 rounded-lg bg-inherit"
@@ -173,7 +178,7 @@
 						value={item.date}
 					/>
 				</div>
-			</div>
+			</div> -->
 		</div>
 		<div class=" px-12">
 			{#if $page.form?.result}
@@ -181,6 +186,7 @@
 					{$page.form?.result}
 				</div>
 			{/if}
+			<p class=" bg-red-500 px-3 ">{$page.form?.error || ''}</p>
 			<div
 				class="hover:border py-1.5 mt-3 bg-green-700 border-gray-100  text-center  font-bold rounded-xl"
 			>

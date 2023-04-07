@@ -35,7 +35,7 @@
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<div
 					data-sveltekit-preload-data="hover"
-					on:click={() => goto(`/pages/${item.id}`)}
+					on:click={() => goto(`/pages/${item._id}`)}
 					class="grid grid-cols-4 mt-2 justify-around hover:shadow-lg shadow-white items-stretch select-none cursor-pointer text-[10px] md:text-[13px] "
 					style="background: {item.type === 'income' ? '#26432057' : '#43202057'}"
 				>

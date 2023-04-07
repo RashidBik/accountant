@@ -1,21 +1,26 @@
-import { data } from '$lib/data/db';
+import { User } from '$lib/server/model/mongo';
 import { json } from '@sveltejs/kit';
 
 // @ts-ignore
-export const GET = ({ params }) => {
-	const items = data[0].contents.find((items) => items.id == params.item);
-
-	return json(items);
+export const GET = async ({ params, locals }) => {
+	let user = locals.user;
+	if (user) {
+		const items = await user.contents.find((items) => items._id == params.item);
+		if (items) {
+			return json(items);
+		}
+	}
 };
 
 // @ts-ignore
-export const DELET = async ({ params }) => {
-	const newData = data[0].contents.filter((items) => items.id !== params.item);
-	if (newData) {
-		data[0].contents = newData;
-		console.log(newData);
-		return json('successfully deleted');
-	} else {
-		return json('there is a problem with id');
+export const DELETE = async ({ params, locals }) => {
+	const user = await User.findById(locals.user.id);
+	if (!user) {
+		return json({ error: 'Looks like you dont have premission' });
 	}
+
+	await user.contents.remove(params.item);
+
+	await user.save();
+	return json({ result: true });
 };

@@ -1,23 +1,26 @@
-import { data } from '$lib/data/db';
 import { json } from '@sveltejs/kit';
+import { User } from '$lib/server/model/mongo';
 
 // @ts-ignore
 export const POST = async ({ request }) => {
 	const { email, password } = await request.json();
-	// const res = JSON.parse(email);
-	const userEmail = data.find((user) => user.user.email == email);
-	const userPswd = data.find((user) => user.user.password == password);
+	// const userEmail = data.find((user) => user.user.email == email);
+	// const userPswd = data.find((user) => user.user.password == password);
+	const user = await User.findOne({ email: email });
 
-	if (!userEmail) {
-		return json('your email is wrong');
+	if (!user?.email || !user?.password) {
+		return json({
+			result: null,
+			auth: false,
+			message: 'Not found such user'
+		});
 	}
-	if (!userPswd) {
-		return json('your password is wrong');
+	if (user?.email != email || user?.password !== password) {
+		return json('your Email or Password is wrong');
 	}
-
 	return json({
-		result: userEmail.user.name,
 		auth: true,
+		result: { id: user.id, email: user.email, name: user.name },
 		message: 'Checked successfully and you are authenticated now'
 	});
 };

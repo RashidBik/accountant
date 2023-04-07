@@ -1,13 +1,12 @@
-import { data } from '$lib/data/db';
 import { json } from '@sveltejs/kit';
+import { User } from '$lib/server/model/mongo';
 
 // @ts-ignore
 export const POST = async ({ request }) => {
 	const { name, job, email, password } = await request.json();
 
-	data.push({
+	const user = await User.create({
 		user: {
-			id: data.length + 1,
 			name,
 			job,
 			email,
@@ -16,11 +15,11 @@ export const POST = async ({ request }) => {
 		contents: []
 	});
 
-	const user = data.find((user) => user.user.email == email);
-
-	if (user) {
-		return json({ success: true });
-	} else {
-		return json({ error: 'An Error Occurred!!' });
-	}
+	user.save((/** @type {any} */ err) => {
+		if (!err) {
+			return json({ success: true });
+		} else {
+			return json({ error: 'An Error Occurred!!' });
+		}
+	});
 };

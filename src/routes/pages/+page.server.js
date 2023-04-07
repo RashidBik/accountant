@@ -12,21 +12,25 @@ export const actions = {
 		const report = form.get('report');
 		const date = form.get('date');
 
-		const response = await fetch('/pages', {
-			method: 'POST',
-			body: JSON.stringify({ amount, type, group, deal, report, date }),
-			credentials: 'include',
-			headers: {
-				Accept: 'application/josn',
-				'Content-Type': 'application/json'
-			}
-		});
-		const result = await response.json();
-
-		if (result.succes) {
-			throw redirect(302, '/pages/report');
+		if (!amount || !type || !group || !deal || !report || !date) {
+			return { error: 'please fill in correctly' };
 		} else {
-			return { error: 'An Error Occured' };
+			const response = await fetch('/pages', {
+				method: 'POST',
+				body: JSON.stringify({ amount, type, group, deal, report, date }),
+				credentials: 'include',
+				headers: {
+					Accept: 'application/josn',
+					'Content-Type': 'application/json'
+				}
+			});
+			const result = await response.json();
+
+			if (result.succes) {
+				throw redirect(302, '/pages');
+			} else {
+				return { error: 'An Error Occured' };
+			}
 		}
 	}
 };

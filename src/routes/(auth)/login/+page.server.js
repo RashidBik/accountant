@@ -6,6 +6,11 @@ export const actions = {
 		const form = await request.formData();
 		const email = form.get('email');
 		const password = form.get('password');
+
+		if (!email || !password) {
+			return { error: 'Please fill in correctly' };
+		}
+
 		const res = await fetch('/login', {
 			method: 'POST',
 			body: JSON.stringify({ email, password }),
@@ -16,12 +21,13 @@ export const actions = {
 			}
 		});
 
-		const { result, auth } = await res.json();
+		const { result, auth, message } = await res.json();
 		if (!result) {
-			return { error: 'Email or Password is not valid!!' };
+			return { message: message, error: 'Email or Password is not valid!!' };
 		}
 		if (auth) {
-			cookies.set('userxyz', result, { path: '/' });
+			console.log(result);
+			cookies.set('userxyz', JSON.stringify(result), { path: '/' });
 			throw redirect(302, '/pages');
 		}
 	}

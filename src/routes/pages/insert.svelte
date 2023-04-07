@@ -1,13 +1,9 @@
 <script>
 	import { page } from '$app/stores';
+	import { fetched } from '$lib/store/data';
 
 	// @ts-nocheck
 
-	import { fetched } from '$lib/store/data';
-
-	/**
-	 * @type {any}
-	 */
 	export let handleInsert;
 
 	$: visible = false;
@@ -62,7 +58,7 @@
 						<input
 							class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
 							type="radio"
-							value="Cash"
+							value="cash"
 							name="deal"
 						/>
 					</div>
@@ -71,7 +67,7 @@
 						<input
 							class=" font-bold px-3 p-2 rounded-xl border border-gray-100"
 							type="radio"
-							value="Credit"
+							value="credit"
 							name="deal"
 						/>
 					</div>

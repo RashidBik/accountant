@@ -32,10 +32,11 @@
 			<p class="p-2">{items && items.report}</p>
 		</div>
 		<div class="flex justify-center">
-			<button on:click={() => goto(`/pages/${items.id}/update`)} class="px-4 bg-lime-800 rounded-xl"
-				>update</button
+			<button
+				on:click={() => goto(`/pages/${items._id}/update`)}
+				class="px-4 bg-lime-800 rounded-xl">update</button
 			>
-			<form action="/pages/{items.id}" use:enhance method="post">
+			<form action="/pages/{items._id}" use:enhance method="post">
 				{#if $page.form?.result}
 					<p>{$page.form?.result}</p>
 				{/if}

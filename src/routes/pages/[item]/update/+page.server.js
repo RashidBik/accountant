@@ -10,24 +10,28 @@ export const actions = {
 		const deal = form.get('deal');
 		const group = form.get('group');
 		const report = form.get('report');
-		const date = form.get('date');
+		// const date = form.get('date');
 
-		const response = await fetch(`/pages/${params.item}/update`, {
-			method: 'POST',
-			body: JSON.stringify({ amount, type, group, deal, report, date }),
-			credentials: 'include',
-			headers: {
-				Accept: 'application/josn',
-				'Content-Type': 'application/json'
-			}
-		});
-		const result = await response.json();
-		if (result.success) {
-			throw redirect(302, '/pages/report');
+		if (!amount || !type || !deal || !group || !report) {
+			return { error: 'please fill in correctly' };
 		} else {
-			return {
-				result
-			};
+			const response = await fetch(`/pages/${params.item}/update`, {
+				method: 'POST',
+				body: JSON.stringify({ amount, type, group, deal, report }),
+				credentials: 'include',
+				headers: {
+					Accept: 'application/josn',
+					'Content-Type': 'application/json'
+				}
+			});
+			const { result, error } = await response.json();
+			if (result) {
+				throw redirect(302, '/pages/reports');
+			} else {
+				return {
+					error: error
+				};
+			}
 		}
 	}
 };

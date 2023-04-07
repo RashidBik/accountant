@@ -15,7 +15,7 @@
 	<div class="w-full md:max-w-md">
 		{#each items as item}
 			<div
-				on:click={() => goto(`/pages/${item.id}`)}
+				on:click={() => goto(`/pages/${item._id}`)}
 				class="flex justify-evenly border cursor-pointer m-1"
 			>
 				<div class="">{item.date}</div>

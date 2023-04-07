@@ -1,4 +1,6 @@
 <script>
+	import { enhance } from '$app/forms';
+
 	// import { page } from '$app/stores';
 	import { lang } from '$lib/store/lang';
 	/**
@@ -12,23 +14,28 @@
 		&leftarrow;
 	</button>
 	<div class="  md:text-[14px] mx-auto  max-w-md w-full px-12">
-		<form action="/login" method="post" class="flex flex-col rounded-xl  justify-center ">
+		<form
+			use:enhance
+			action="/login"
+			method="post"
+			class="flex flex-col rounded-xl  justify-center "
+		>
 			<div>{$lang.login[0]}</div>
 			<h1>{form?.result || ''}</h1>
 			<h3>{form?.message || ''}</h3>
 			<input
-				class="p-2 mt-4 rounded-xl "
+				class="p-2 mt-4 rounded-xl text-black "
 				type="email"
 				name="email"
 				placeholder={$lang.login[1]}
-				value="test@example.com"
+				value="rashid@gmail.com"
 				required
 			/>
 			<input
-				class="p-2 mt-4 rounded-xl "
+				class="p-2 mt-4 rounded-xl text-black "
 				type="password"
 				name="password"
-				value="abc123"
+				value="1234"
 				placeholder={$lang.login[2]}
 				required
 			/>

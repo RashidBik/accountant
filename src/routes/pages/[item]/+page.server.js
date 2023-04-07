@@ -4,17 +4,19 @@ import { redirect } from '@sveltejs/kit';
 export const actions = {
 	default: async ({ fetch, params }) => {
 		const response = await fetch(`/pages/${params.item}`, {
-			method: 'DELET',
+			method: 'DELETE',
 			headers: {
 				Accept: 'application/json',
 				'Content-Type': 'application/json'
 			}
 		});
-		const result = await response.json();
+		const { result, error } = await response.json();
 
-		return {
-			result
-		};
+		if (result) {
+			return redirect(302, '/pages/reports');
+		} else {
+			return { result: error };
+		}
 	}
 };
 
