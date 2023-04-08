@@ -12,7 +12,11 @@
 <div class=" flex flex-col items-center h-full mx-auto ">
 	{#if auth}
 		<div class=" w-[75%] md:w-[30%]">
-			<Chart chart={data.chart} />
+			{#if data.chart.names == ''}
+				<p class="text-center">(Empty)</p>
+			{:else}
+				<Chart chart={data.chart} />
+			{/if}
 		</div>
 	{:else}
 		<div class="p-4">

@@ -8,7 +8,7 @@
 	export let data;
 	const { auth } = data;
 
-	let insert = false;
+	$: insert = false;
 	$: blur = '';
 	$: sidbar = 'hidden';
 
@@ -70,7 +70,9 @@
 		</div>
 	{/if}
 </div>
-<div class="fixed md:hidden {blur === 'blur' && 'hidden'} "><NewInser {auth} {handleInsert} /></div>
+<div class="fixed md:hidden {blur === 'blur' && 'hidden'} ">
+	<NewInser {insert} {auth} {handleInsert} />
+</div>
 
 <style>
 	.active {
