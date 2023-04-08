@@ -18,8 +18,9 @@
 				placeholder={$lang.register[1]}
 				type="text"
 				name="name"
-				required
+				value={$page.form?.name || ''}
 			/>
+			<p class="bg-[red] px-2 rounded-lg ">{$page.form?.nameError || ''}</p>
 		</div>
 		<div class="relative ">
 			<input
@@ -27,8 +28,9 @@
 				placeholder={$lang.register[2]}
 				type="text"
 				name="job"
-				required
+				value={$page.form?.job || ''}
 			/>
+			<p class="bg-[red] px-2 rounded-lg ">{$page.form?.jobError || ''}</p>
 		</div>
 		<div class="relative ">
 			<input
@@ -36,8 +38,9 @@
 				placeholder={$lang.register[3]}
 				type="email"
 				name="email"
-				required
+				value={$page.form?.email || ''}
 			/>
+			<p class="bg-[red] px-2 rounded-lg ">{$page.form?.emailError || ''}</p>
 		</div>
 		<div class="relative ">
 			<input
@@ -45,10 +48,10 @@
 				placeholder={$lang.register[4]}
 				type="password"
 				name="password"
-				required
 			/>
 		</div>
 		<p class="text-white bg-[#92282872] mt-1 px-4">{$page.form?.result || ''}</p>
+		<p class="bg-[red] px-2 rounded-lg ">{$page.form?.error || ''}</p>
 		<div class="relative py-4 text-center font-bold  ">
 			<input
 				class="px-3 py-2 border rounded-xl visited:bg-orange-500 text-green-300"

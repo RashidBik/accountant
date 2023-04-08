@@ -18,9 +18,7 @@ export const DELETE = async ({ params, locals }) => {
 	if (!user) {
 		return json({ error: 'Looks like you dont have premission' });
 	}
-
 	await user.contents.remove(params.item);
-
 	await user.save();
 	return json({ result: true });
 };

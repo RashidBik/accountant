@@ -9,6 +9,44 @@ export const actions = {
 		const email = form.get('email');
 		const password = form.get('password');
 
+		if (!name && !job && !email && !password) {
+			return {
+				error: 'please fill in all feild'
+			};
+		}
+		if (!name) {
+			return {
+				job,
+				email,
+				password,
+				nameError: 'please fill in the name feild'
+			};
+		}
+		if (!job) {
+			return {
+				name,
+				email,
+				password,
+				jobError: 'please fill in the job feild'
+			};
+		}
+		if (!email) {
+			return {
+				name,
+				job,
+				password,
+				emailError: 'please fill in the email feild'
+			};
+		}
+		if (!password) {
+			return {
+				name,
+				email,
+				job,
+				passwordError: 'please fill in the password feild'
+			};
+		}
+
 		const response = await fetch('/register', {
 			method: 'POST',
 			body: JSON.stringify({ name, job, email, password }),

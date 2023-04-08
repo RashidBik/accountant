@@ -1,5 +1,4 @@
 import { json } from '@sveltejs/kit';
-// import { data } from '$lib/data/db';
 
 export const GET = ({ locals }) => {
 	let user = locals.user;
