@@ -35,13 +35,16 @@ export const actions = {
 	}
 };
 
-export const load = async ({ fetch }) => {
-	const response = await fetch('/pages');
-	const result = await response.json();
+export const load = async ({ fetch, locals }) => {
+	let user = locals.user;
+	if (user) {
+		const response = await fetch('/pages');
+		const result = await response.json();
 
-	const numbers = result.numbers;
-	const names = result.name;
-	return {
-		chart: { numbers, names }
-	};
+		const numbers = result.numbers;
+		const names = result.name;
+		return {
+			chart: { numbers, names }
+		};
+	} else return { message: 'You are not logged in' };
 };

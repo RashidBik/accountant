@@ -28,17 +28,21 @@
 				type="email"
 				name="email"
 				placeholder={$lang.login[1]}
-				value="rashid@gmail.com"
-				required
+				value={form?.email || ''}
 			/>
+			<p>{form?.emailError || ''}</p>
+
 			<input
 				class="p-2 mt-4 rounded-xl text-black "
 				type="password"
 				name="password"
-				value="1234"
 				placeholder={$lang.login[2]}
-				required
 			/>
+			<p>{form?.passwordError || ''}</p>
+			{#if form?.error}
+				<p class="text-center text-[11px] py-1 rounded-md my-1 bg-red-500">{form?.error || ''}</p>
+			{/if}
+
 			<input
 				class="border mt-4 px-3 py-2 rounded-xl text-green-300"
 				type="submit"
@@ -46,7 +50,6 @@
 			/>
 		</form>
 	</div>
-	<p class="text-center text-[11px] text-red-500">{form?.error || ''}</p>
 	<div>
 		<p class="text-[8px] p-8 text-center">
 			if you don't have an account already click to &RightArrow;

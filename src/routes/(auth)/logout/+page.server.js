@@ -4,7 +4,7 @@ export const actions = {
 	default: async ({ cookies }) => {
 		if (cookies.get('userxyz')) {
 			cookies.delete('userxyz');
-			throw redirect(302, '/');
 		}
+		throw redirect(302, '/');
 	}
 };
