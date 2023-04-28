@@ -30,13 +30,13 @@
 <div class={insert ? 'flex' : ''}>
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<main class=" h-screen flex flex-col justify-between items-center {insert ? 'md:w-[70%]' : ''} ">
-		<header class="{blur} md:!hidden bg-[cadetblue] w-full self-start p-4  ">
+		<header class="{blur} md:!hidden bg-[cadetblue] w-full self-start p-4">
 			<button on:click={handlMenu} class="menuBtn">|||</button>
 		</header>
-		<div class="{sidbar} md:!flex md:w-full ">
+		<div class="{sidbar} md:!flex md:w-full">
 			<Sidbar {closeMenu} {bluring} {handleInsert} {insert} />
 		</div>
-		<div class="relative {blur} h-full w-full md:px-40 overflow-y-auto ">
+		<div class="relative {blur} h-full w-full md:px-40 overflow-y-auto">
 			<slot />
 		</div>
 		<footer
